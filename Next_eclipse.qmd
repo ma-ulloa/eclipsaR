@@ -1,0 +1,10 @@
+---
+title: "Next solar eclipse"
+format: html
+---
+
+The next solar eclipse will be in:
+
+```{r}
+today <- Sys.Date()
+```
