@@ -3,8 +3,24 @@ title: "Next solar eclipse"
 format: html
 ---
 
+```{r}
+library(dplyr)
+library(readr)
+```
+
+```{r, import_data}
+eclipse_data <- read_csv("formatted_eclipses.csv")
+```
 The next solar eclipse will be in:
 
 ```{r}
 today <- Sys.Date()
+
+next_eclipse_date <- mod_table |>
+  mutate(Date = as.Date(Date)) |>
+  filter(Date >= today) |>
+  slice_min(Date, n = 1) |>
+  pull(Date)
+
+next_eclipse_date
 ```
