@@ -1,0 +1,55 @@
+---
+title: "Plot eclipse path"
+format: html
+---
+
+
+```{r}
+library(sf)
+library(ggplot2)
+library(tidyverse)
+library(rnaturalearth)
+library(ggcats)
+```
+
+# Load data
+
+
+```{r}
+urls <- c(
+  # "http://xjubier.free.fr/download/GE/en/TSE_2024_04_08.kmz",
+  "http://xjubier.free.fr/download/GE/en/TSE_2027_08_02.kmz"
+  # "http://xjubier.free.fr/download/GE/en/TSE_2026_08_12.kmz"
+)
+
+dest <- file.path(tempdir(), basename(urls))
+walk2(urls, dest, ~ download.file(.x, .y, mode = "wb"))
+```
+
+
+```{r}
+layers <- st_layers(dest)
+max_point <- st_read(dest, layer = layers$name[1])
+path <- st_read(dest, layer = layers$name[2])
+```
+
+
+```{r}
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
+ggplot() +
+  geom_sf(data = world, fill = "white", color = "grey", linewidth = 0.2) +
+  geom_sf(
+    data = path,
+    fill = "orange",
+    color = NA,
+    linewidth = 0.1,
+    alpha = .3
+  ) +
+
+  geom_sf(
+    data = max_point
+  ) +
+  coord_sf(expand = FALSE) +
+  theme_void()
+```
