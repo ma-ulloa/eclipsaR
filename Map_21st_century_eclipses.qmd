@@ -30,15 +30,16 @@ eclipse_data <- eclipse_data %>%
 eclipse_colors <- c(
   "Total" = "#000000",
   "Total (non-central)" = "#000000",
-  "Annular" = "#051427",
-  "Annular (non-central)" = "#051427",
-  "Partial" = "#a44322",
-  "Hybrid" = "#530f1e"
+  "Hybrid" = "#530f1e",
+  "Annular" = "#a44322",
+  "Annular (non-central)" = "#a44322", 
+  "Partial" = "#f8bc04" 
 )
 
 plot_ly(
   eclipse_data,
   type = "scattermapbox",
+  mode = "markers",
   lat = ~Latitude, lon = ~Longitude, 
   color = ~Type,
   colors = eclipse_colors,
@@ -51,6 +52,6 @@ plot_ly(
       lon = 0, 
       lat = 0
     ), 
-    zoom = 0.01
+    zoom = 1
   ))
 ```
