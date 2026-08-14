@@ -1,0 +1,56 @@
+---
+title: "Map 21st century eclipses"
+format: html
+---
+
+```{r}
+library(readr)
+library(ggiraph)
+library(tidyr)
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(plotly)
+```
+
+```{r}
+eclipse_data <- read_csv("formatted_eclipses.csv")
+```
+
+```{r}
+eclipse_data <- eclipse_data %>%
+  mutate(
+    hover = paste(
+      "Type:", Type,
+      "<br>Date:", Date,
+      "<br>Time:", `Time ofgreatest eclipse(Terrestrial Time)`
+    )
+  )
+
+eclipse_colors <- c(
+  "Total" = "#000000",
+  "Total (non-central)" = "#000000",
+  "Annular" = "#051427",
+  "Annular (non-central)" = "#051427",
+  "Partial" = "#a44322",
+  "Hybrid" = "#530f1e"
+)
+
+plot_ly(
+  eclipse_data,
+  type = "scattermapbox",
+  lat = ~Latitude, lon = ~Longitude, 
+  color = ~Type,
+  colors = eclipse_colors,
+  text = ~hover, hoverinfo = "text",
+  marker = list(size = 7, opacity = 0.65)
+) |>
+  layout(mapbox = list(
+    style = "open-street-map",
+    center = list(
+      lon = 0, 
+      lat = 0
+    ), 
+    zoom = 0.01
+  ))
+```
