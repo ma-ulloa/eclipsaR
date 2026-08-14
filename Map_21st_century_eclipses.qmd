@@ -1,6 +1,11 @@
 ---
-title: "Map 21st century eclipses"
+title: "Map the 21st century Eclipses"
 format: html
+
+execute:
+  echo: false
+  warning: false
+  freeze: auto
 ---
 
 ```{r}
