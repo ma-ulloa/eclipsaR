@@ -7,7 +7,10 @@ og_table <- read_csv("Eclipses_21st_century.csv")[-1, ]
 mod_table <- og_table
 
 #Change date format from Month day, year (ex.: August 13, 2026) to year-month-day (ex.: 2026-08-13)
-mod_table$Date <- format(as.Date(mod_table$Date, format = "%B %d, %Y"), "%Y-%m-%d")
+mod_table$Date <- format(
+  as.Date(mod_table$Date, format = "%B %d, %Y"),
+  "%Y-%m-%d"
+)
 
 mod_table <- mod_table[, 1:(ncol(mod_table) - 2)]
 
@@ -22,11 +25,8 @@ mod_table <- mod_table |>
     into = c("location-hyphen", "location-degree", "location-numeric"),
     sep = " / "
   ) |>
-  separate("location-numeric",
-    into = c("Latitude", "Longitude"),
-    sep = "; "
-  ) |>
+  separate("location-numeric", into = c("Latitude", "Longitude"), sep = "; ") |>
   select(-c("location-hyphen", "location-degree"))
 
 #Save formatted table
-write_csv(mod_table, "formatted_eclipses.csv")
+write_csv(mod_table, "data/formatted_eclipses.csv")

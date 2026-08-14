@@ -14,16 +14,19 @@ library(plotly)
 ```
 
 ```{r}
-eclipse_data <- read_csv("formatted_eclipses.csv")
+eclipse_data <- read_csv("data/formatted_eclipses.csv")
 ```
 
 ```{r}
 eclipse_data <- eclipse_data %>%
   mutate(
     hover = paste(
-      "Type:", Type,
-      "<br>Date:", Date,
-      "<br>Time:", `Time ofgreatest eclipse(Terrestrial Time)`
+      "Type:",
+      Type,
+      "<br>Date:",
+      Date,
+      "<br>Time:",
+      `Time ofgreatest eclipse(Terrestrial Time)`
     )
   )
 
@@ -40,18 +43,22 @@ plot_ly(
   eclipse_data,
   type = "scattermapbox",
   mode = "markers",
-  lat = ~Latitude, lon = ~Longitude, 
+  lat = ~Latitude,
+  lon = ~Longitude,
   color = ~Type,
   colors = eclipse_colors,
-  text = ~hover, hoverinfo = "text",
+  text = ~hover,
+  hoverinfo = "text",
   marker = list(size = 7, opacity = 0.65)
 ) |>
-  layout(mapbox = list(
-    style = "open-street-map",
-    center = list(
-      lon = 0, 
-      lat = 0
-    ), 
-    zoom = 1
-  ))
+  layout(
+    mapbox = list(
+      style = "open-street-map",
+      center = list(
+        lon = 0,
+        lat = 0
+      ),
+      zoom = 1
+    )
+  )
 ```

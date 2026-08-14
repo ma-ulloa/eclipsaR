@@ -7,11 +7,11 @@ format: html
 library(dplyr)
 library(readr)
 
-source("Format_wikipedia_table.R")  # bring the table here
+source("format_data/Format_wikipedia_table.R") # bring the table here
 ```
 
 ```{r, import_data}
-eclipse_data <- read_csv("formatted_eclipses.csv")
+eclipse_data <- read_csv("data/formatted_eclipses.csv")
 ```
 The next solar eclipse will be in:
 
