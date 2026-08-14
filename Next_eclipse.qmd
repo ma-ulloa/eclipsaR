@@ -6,6 +6,8 @@ format: html
 ```{r}
 library(dplyr)
 library(readr)
+
+source("Format_wikipedia_table.R")  # bring the table here
 ```
 
 ```{r, import_data}
