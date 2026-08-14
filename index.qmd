@@ -1,0 +1,15 @@
+---
+title: "EclipsaR"
+
+
+#listing:
+    #id: reports
+    #contents: reports
+    #type: table
+    #fields: [title, description]
+    #sort: title
+---
+
+Welcome. This is a website about the next solar eclipse.
+
+Head to the **[Next Eclipse](Next_eclipse.qmd)** for the date.

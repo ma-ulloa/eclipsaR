@@ -1,0 +1,22 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "EclipsaR"
+  navbar:              # list the entries yourself
+    left:
+      - href: index.qmd
+        text: Home
+      - href: Next_eclipse.qmd
+        text: Next Eclipse
+  sidebar:
+    contents: auto         
+
+format:
+  html:
+    theme: [cosmo, brand]
+
+execute:
+  echo: false
+  freeze: auto
