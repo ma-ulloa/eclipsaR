@@ -1,0 +1,30 @@
+---
+title: "Eclipses by country"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(plotly)
+
+eclipse_data <- read_csv("data/formatted_eclipses.csv")
+
+plot_ly(
+  eclipse_data,
+  type = "densitymapbox",
+  lat = ~Latitude,
+  lon = ~Longitude,
+  radius = 20,
+  hoverinfo = "none"
+) |>
+  layout(
+    mapbox = list(
+      style = "open-street-map",
+      center = list(
+        lon = 0,
+        lat = 0
+      ),
+      zoom = 1
+    )
+  )
+```
