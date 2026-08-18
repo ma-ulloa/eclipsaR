@@ -1,0 +1,27 @@
+---
+title: "Interactive table"
+format: html
+---
+
+```{r}
+#| label: library
+library(DT)
+library(tidyverse)
+```
+
+```{r}
+#| label: read data
+df <- read_csv("data/formatted_eclipses.csv")
+```
+
+```{r}
+datatable(
+  df,
+  filter = "top",
+  options = list(
+    pageLength = 5,
+    scrollX = TRUE
+  ),
+  rownames = FALSE
+)
+```
