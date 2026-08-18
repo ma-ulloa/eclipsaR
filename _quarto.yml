@@ -10,6 +10,8 @@ website:
         text: Home
       - href: Next_eclipse.qmd
         text: Next Eclipse
+      - href: Map_21st_century_eclipses.qmd
+        text: 21st century eclipses
   sidebar:
     contents: auto         
 
@@ -19,4 +21,5 @@ format:
 
 execute:
   echo: false
+  warning: false
   freeze: auto

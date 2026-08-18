@@ -1,6 +1,11 @@
 ---
-title: "Next solar eclipse"
+title: "Next Solar Eclipse"
 format: html
+
+execute:
+  echo: false
+  warning: false
+  freeze: auto
 ---
 
 ```{r}

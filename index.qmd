@@ -12,4 +12,5 @@ title: "EclipsaR"
 
 Welcome. This is a website about the next solar eclipse.
 
-Head to the **[Next Eclipse](Next_eclipse.qmd)** for the date.
+Head to the **[Next Solar Eclipse](Next_eclipse.qmd)** for the date.
+Head to the **[Map 21st Century Eclipses](Map_21st_century_eclipses.qmd)** for the date.
