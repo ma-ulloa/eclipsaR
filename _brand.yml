@@ -5,6 +5,16 @@ color:
 typography:
   fonts:
     - family: Albert Sans
-      source: google
+      source: file
+      files:
+        - path: fonts/AlbertSans-Regular.woff2
+          weight: 400
+          style: normal
+        - path: fonts/AlbertSans-Bold.woff2
+          weight: 700
+          style: normal
+        - path: fonts/AlbertSans-Italic.woff2
+          weight: 400
+          style: italic
   base:
     family: Albert Sans
