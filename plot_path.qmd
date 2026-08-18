@@ -96,10 +96,9 @@ Example:
 
 ```{r}
 eclipses <- read_csv("data/formatted_eclipses.csv")
-lapply(1:nrow(eclipses), \(x) {
-  row <- eclipses[x, ]
-  print(paste(row$Date, row$Type))
-  url <- construct_url(row$Date, row$Type)
-  print(plot_path(url))
-})
+
+eclipse_date <- "2026-08-12"
+type <- "Total"
+
+plot_path(construct_url(eclipse_date, type))
 ```
