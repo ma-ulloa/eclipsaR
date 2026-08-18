@@ -47,9 +47,7 @@ mod_table <- mod_table |> select(!Geographical_area)
 # remove extra words in `Type` column
 
 mod_table <- mod_table |>
-  mutate(Type = str_split_i(Type, i = 1, pattern = " ")) |>
-  pull(Type) |>
-  table()
+  mutate(Type = str_split_i(Type, i = 1, pattern = " "))
 
 #Save formatted table
 write_csv(mod_table, "data/formatted_eclipses.csv")
