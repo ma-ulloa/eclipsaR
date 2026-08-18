@@ -1,0 +1,44 @@
+---
+title: "About us"
+title-block-banner: true
+title-block-banner-color: " #AC6722"
+format: html
+page-layout: full
+---
+
+::: {layout="[20,80]"}
+![](data/profiles/Andrea.png)
+
+#### Andrea {.text-center}
+
+Second year PhD student KTH
+Professional in making you laugh.
+:::
+
+::: {layout="[20,80]"}
+![](data/profiles/Ale.jpeg)
+
+#### Ale {.text-center}
+
+First year PhD student Karolinska Institutet.
+Cosplaying artsy girlie. Likes movies and photography.
+:::
+
+::: {layout="[20,80]"}
+![](data/profiles/Matilde.png)
+
+#### Matilde {.text-center}
+
+First year PhD student Stockholm University.
+Reddit afficionada. Becoming a fungi expert. 
+
+:::
+
+::: {layout="[20,80]"}
+![](data/profiles/Martin.jpg)
+
+#### Martin {.text-center}
+
+First year PhD student Karolinska Institutet.
+Safo's dad. Enjoy's running, maths and life.
+:::

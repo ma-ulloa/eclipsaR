@@ -1,0 +1,75 @@
+---
+format: html
+page-layout: full
+---
+
+```{r}
+#| label: facts cards
+library(ggplot2)
+library(stringr)
+
+make_fact_card <- function(fact_text, fill = "#2c3e50", text_color = "white") {
+  ggplot() +
+    geom_rect(
+        aes(
+            xmin = 0,
+            xmax = 2,
+            ymin = 0,
+            ymax = 1),
+            fill = fill
+            ) +
+    annotate("text",
+            x = 1,
+            y = 0.5,
+            label = str_wrap(fact_text, width = 30),
+            color = text_color,
+            family = "Avenir Next Ultra Light Italic",
+            size = 4,
+            hjust = 0.5, 
+            vjust = 0.5
+    ) +
+    theme_void() +
+    coord_fixed(ratio = 1)
+}
+
+
+```
+
+
+```{r}
+#| label: facts-cards-grid
+#| column: screen-inset
+#| out-width: "100%"
+#| fig-width: 9
+#| fig-height: 22
+library(patchwork)
+
+eclipse_facts <- c(
+  "A total solar eclipse is possible only because of a wild coincidence: the Sun is about 400 times wider than the Moon, but also about 400 times farther away, so they appear almost exactly the same size in our sky.",
+  "That coincidence won't last forever. The Moon drifts away from Earth by about 3.8 cm per year, so in roughly 600 million years it'll be too far away to fully cover the Sun, and total solar eclipses will stop happening.",
+  "The path of totality during a total solar eclipse is usually only 100-160 km wide, even though the partial eclipse can be seen across a much larger swath of the planet.",
+  "Totality itself rarely lasts more than about 7.5 minutes anywhere on Earth, and most total eclipses are much shorter than that.",
+  "During totality, temperatures can drop noticeably, sometimes several degrees Celsius, since sunlight is briefly blocked.",
+  "Animals often react as if night has fallen: birds go quiet, crickets start chirping, and some flowers close up.",
+  "You can only ever see a solar eclipse from the daytime side of Earth, but a lunar eclipse is visible from the entire night side at once.",
+  "Lunar eclipses happen when Earth's shadow falls on the Moon, which is why totally eclipsed moons turn reddish orange. This gives us the term \"Blood Moon.\"",
+  "Eclipses only happen near a \"node,\" where the Moon's tilted orbit crosses Earth's orbital plane -- that's why we don't get an eclipse every single month despite a new or full moon happening monthly.",
+  "Because of that tilt, solar and lunar eclipses come in pairs roughly two weeks apart, one solar and one lunar, during \"eclipse seasons\" that occur about twice a year.",
+  "Ancient Babylonian astronomers discovered the Saros cycle around 600 BCE, a roughly 18-year, 11-day period after which eclipses repeat in a very similar pattern.",
+  "A solar eclipse can only happen at a new moon, and a lunar eclipse only at a full moon -- never any other phase.",
+  "Despite that timing overlap, we don't get an eclipse every new and full moon because the Moon's orbit is tilted about 5 degrees relative to Earth's orbit around the Sun.",
+  "There are more solar eclipses than lunar eclipses globally each year, but lunar eclipses are visible from far more places on Earth, so people report seeing lunar eclipses more often.",
+  "An annular eclipse, sometimes called a \"ring of fire,\" happens when the Moon is near the farthest point in its orbit (apogee) and looks slightly too small to fully cover the Sun.",
+  "The 2017 \"Great American Eclipse\" was the first total solar eclipse to cross the entire contiguous United States coast-to-coast since 1918.",
+  "Eclipses have shaped history: a solar eclipse in 585 BCE reportedly stopped a battle between the Lydians and the Medes, who took it as a sign to make peace.",
+  "Christopher Columbus is said to have used his advance knowledge of a lunar eclipse in 1504 to intimidate Indigenous Jamaicans into continuing to supply his stranded crew, by \"threatening\" to make the moon disappear. In fact, the last total solar eclipse lasting more than 7 minutes was on June 30th, 1973, with the next occurring on July 27th, 2204.",
+  "Solar eclipse corona observations in 1919 helped confirm Einstein's general theory of relativity, when starlight was shown to bend around the Sun exactly as predicted.",
+  "Other planets have eclipses too. Jupiter's large moons regularly cast shadows on its cloud tops, an event you can actually watch through a home telescope."
+)
+
+colors <- c("#2c3e50","#FFB400", "#FDAE54")
+
+cards <- Map(make_fact_card, eclipse_facts, rep_len(colors, length(eclipse_facts)))
+
+wrap_plots(cards, ncol = 2)
+```

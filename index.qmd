@@ -1,6 +1,8 @@
 ---
-title: "EclipsaR"
-
+format: html
+page-layout: full
+resources:
+  - data/homepage_background.jpg
 
 #listing:
     #id: reports
@@ -9,8 +11,82 @@ title: "EclipsaR"
     #fields: [title, description]
     #sort: title
 ---
+<style>
+  body {
+  background-image: url("data/homepage_background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+  a {
+  color: white;
+  text-decoration: underline;
+}
+  .navbar-brand,
+  .navbar-nav .nav-link {
+  color: white !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link.active {
+  color: #eee !important;
+}
+  h1 {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+  h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+  body {
+  font-size: 1.5rem;
+}
+  #eclipse-countdown {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+  main {
+  padding: 2rem 3rem;
+}
+</style>
 
-Welcome. This is a website about the next solar eclipse.
+```{r}
+#| include: false
+source("format_data/get_next_eclipse.R")
+```
 
-Head to the **[Next Solar Eclipse](Next_eclipse.qmd)** for the date.
-Head to the **[Map 21st Century Eclipses](Map_21st_century_eclipses.qmd)** for the date.
+## Next Eclipse {.text-center}
+
+<div id="eclipse-countdown">Loading countdown...</div>
+
+<script>
+const eclipseTarget = new Date("`r next_eclipse_date`T00:00:00");
+
+function updateEclipseCountdown() {
+  const now = new Date();
+  const diff = eclipseTarget - now;
+  const el = document.getElementById("eclipse-countdown");
+
+  if (diff <= 0) {
+    el.textContent = "The eclipse is happening now!";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  el.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+updateEclipseCountdown();
+setInterval(updateEclipseCountdown, 1000);
+</script>
+

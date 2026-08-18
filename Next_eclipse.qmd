@@ -9,25 +9,11 @@ execute:
 ---
 
 ```{r}
-library(dplyr)
-library(readr)
-
-source("format_data/Format_wikipedia_table.R") # bring the table here
+source("format_data/get_next_eclipse.R")
 ```
 
-```{r, import_data}
-eclipse_data <- read_csv("data/formatted_eclipses.csv")
-```
 The next solar eclipse will be in:
 
 ```{r}
-today <- Sys.Date()
-
-next_eclipse_date <- mod_table |>
-  mutate(Date = as.Date(Date)) |>
-  filter(Date >= today) |>
-  slice_min(Date, n = 1) |>
-  pull(Date)
-
 next_eclipse_date
 ```

@@ -4,16 +4,22 @@ project:
 
 website:
   title: "EclipsaR"
-  navbar:              # list the entries yourself
+  navbar:
+    background: transparent
     left:
       - href: index.qmd
         text: Home
-      - href: Next_eclipse.qmd
-        text: Next Eclipse
       - href: Map_21st_century_eclipses.qmd
         text: 21st century eclipses
-  sidebar:
-    contents: auto         
+      - href: fun_facts.qmd
+        text: Fun facts
+  page-footer:
+    center:
+      - href: about.qmd
+        text: about us
+    background: transparent
+    foreground: white
+
 
 format:
   html:
