@@ -16,6 +16,7 @@ library(dplyr)
 library(stringr)
 library(ggplot2)
 library(plotly)
+library(vistime)
 ```
 
 ```{r}
@@ -64,4 +65,44 @@ plot_ly(
       zoom = 1.5
     )
   )
+```
+
+
+
+```{r}
+#| label: timeline
+
+eclipse_tab <- eclipse_data |> 
+    rowid_to_column() |> 
+    mutate(event = paste0("event", rowid),
+    color = case_when(
+        Type == "Total" ~ "#2c3e50",
+        Type == "Annular" ~"#FFB400",
+        Type == "Partial" ~ "#FDAE54",
+        Type == "Hybrid" ~ "grey90"
+    ))
+
+timeline_data <- data.frame(
+    event = eclipse_tab$event,
+    start = eclipse_tab$Date,
+    type = eclipse_tab$Type,
+    color = eclipse_tab$color
+)
+
+timelineplot <- vistime::vistime(timeline_data,
+                 col.event = "event",
+                 col.group = "type",
+                 optimize_y = T,
+                 show_labels = FALSE,
+                 linewidth = 12
+
+)
+
+pp <- plotly::plotly_build(timelineplot)
+pp$x$layout$xaxis$tickfont <- list(size = 20)
+pp$x$layout$yaxis$tickfont <- list(size = 20)
+
+pp
+
+
 ```
