@@ -1,0 +1,95 @@
+```{r}
+#eclipse_colors <- c(
+  #"Total" = "#3D3A4B",
+  #"Hybrid" = "#D3C0CD",
+  #"Annular" = "#937666",
+  #"Partial" = "#E3DFFF")
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(ggforce)
+
+# Area of intersection for two EQUAL circles of radius r, centers distance d apart:
+circle_intersection_area <- function(d, r) {
+  if (d >= 2 * r) {
+    return(0)
+  } # no overlap
+  if (d <= 0) {
+    return(pi * r^2)
+  } # fully overlapping
+
+  2 * r^2 * acos(d / (2 * r)) - (d / 2) * sqrt(4 * r^2 - d^2)
+}
+
+# Solve for distance d given target overlap area
+solve_for_distance <- function(target_area, r) {
+  max_area <- pi * r^2
+  if (target_area > max_area) {
+    stop("Target area exceeds a full circle's area.")
+  }
+
+  f <- function(d) circle_intersection_area(d, r) - target_area * pi * r**2
+  uniroot(f, lower = 1e-6, upper = 2 * r - 1e-6)$root
+}
+
+
+plot_magnitude <- function(magnitude, type) {
+  if (!(type %in% c("Total", "Hybrid", "Annular", "Partial"))) {
+    stop('`type` has to be one of c("Total", "Hybrid", "Annular", "Partial")')
+  }
+  r <- 1
+  sun <- tibble(x0 = 1, y0 = 1, r = r)
+  if (type %in% c("Total", "Hybrid")) {
+    moon <- sun
+    if (!is.null(magnitude)) {
+      warning(paste0("Magnitude will be ignore because the eclipse is ", type))
+    }
+  }
+
+  if (type == "Annular") {
+    moon <- tibble(x0 = 1, y0 = 1, r = sqrt(magnitude) * r)
+  }
+
+  if (type == "Partial") {
+    d <- solve_for_distance(target_area = magnitude, r = r)
+    moon <- tibble(x0 = 1 - d, y0 = 1, r = r)
+  }
+
+  p <- ggplot() +
+    geom_circle(
+      data = sun,
+      aes(x0 = x0, y0 = y0, r = r),
+      fill = "yellow",
+      #alpha = 0.5,
+      color = NA
+    ) +
+    geom_circle(
+      data = moon,
+      aes(x0 = x0, y0 = y0, r = r),
+      fill = "lightgrey",
+      color = NA
+    ) +
+    coord_fixed() +
+    theme_void()
+
+  return(p)
+}
+
+p <- plot_magnitude(magnitude = 0.65, type = "Partial")
+print(p)
+```
+
+
+```{r}
+library(hexSticker)
+library(showtext)
+
+s <- sticker(p,
+          package="eclipsaR", 
+          p_size=20, p_color="white", p_fontface = "bold", p_family = "Albert Sans",
+          s_x=1, s_y=0.75, s_width=1.25, s_height=1.2,
+          h_fill="#3D3A4B", h_color="#808080",
+          filename="logo/logo-sticker.png")
+```
