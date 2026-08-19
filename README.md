@@ -1,3 +1,5 @@
+<img src="logo/logo-sticker.png" alt="EclipsaR logo" width="180" align="right" />
+
 # 🌑 EclipsaR
 
 > *Sun, meet Moon. Moon, meet Sun. Everyone else, meet EclipsaR.*
