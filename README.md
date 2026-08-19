@@ -18,6 +18,7 @@ Built with 💚 (and an unreasonable amount of `ggplot2`) for [RaukR 2026](https
 | 🗺️ **21st Century Eclipses** | An interactive map of every eclipse path this century — plan your chase |
 | 📊 **Eclipse Info** | A searchable, sortable table of eclipse data, for the spreadsheet-brained among us |
 | 🎉 **Fun Facts** | 22 bite-sized eclipse facts, from Babylonian astronomers to Einstein to angry Chinese dragons |
+| 😎 **Eclipse examples** | Examples of representative eclipses and their paths (this should be a Shiny app, but...) |
 | 👋 **About Us** | Meet the humans behind this amazing website |
 
 ## 🔭 Did you know?

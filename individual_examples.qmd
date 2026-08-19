@@ -44,6 +44,32 @@ p1 <- plot_path(url = construct_url(eclipse1_date, type = eclipse1_type))
 p1
 ```
 
+## Partial eclipse (2069-10-15)
+```{r}
+#| message: false
+#| echo: false
+#| warning: false
+#| results: 'hide'
+#| fig-align: center
+
+eclipse3_date <- "2069-10-15"
+eclipse3_type <- eclipse_data |> filter(Date == eclipse3_date) |> pull(Type)
+eclipse3_magnitude <- eclipse_data |>
+  filter(Date == eclipse3_date) |>
+  pull(Magnitude)
+
+plot_magnitude(eclipse3_magnitude, eclipse3_type)
+p3 <- plot_path(url = construct_url(eclipse3_date, type = eclipse3_type))
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+p3
+```
+
 ## Annular eclipse (2003-05-31)
 ```{r}
 #| message: false
