@@ -1,7 +1,7 @@
 library(readr)
 library(dplyr)
 library(tidyr)
-
+library(tidyverse)
 #Read table extracted from wikipedia
 og_table <- read_csv("data/Eclipses_21st_century.csv")[-1, ]
 mod_table <- og_table
@@ -42,7 +42,7 @@ mod_table <-
 
 # split geographical area
 
-mod_table <- mod_table |> select(!Geographical_area)
+# mod_table <- mod_table |> select(!Geographical_area)
 
 # remove extra words in `Type` column
 
