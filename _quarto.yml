@@ -4,6 +4,7 @@ project:
   render:
     - "*.qmd"
     - "!logo.qmd"
+    - "!format_data/"
 
 website:
   title: "EclipsaR"

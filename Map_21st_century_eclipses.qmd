@@ -34,24 +34,75 @@ library(plotly)
 library(vistime)
 library(tibble)
 library(patchwork)
+library(readr)
+
 ```
 
 ```{r}
 eclipse_data <- read_csv("data/formatted_eclipses.csv")
+country_data <- read_csv("data/total_eclipses_by_country.csv")
 ```
 
-During the 21st century there will be 224 solar eclipses:
-
-- 77 partial 
-- 72 annular
-- 68 total
-- 7 hybrids
-
-:::: {.columns}
-
-::: {.column width="50%"}
 
 ```{r}
+#| label: facts-cards-grid
+#| column: screen-inset
+#| out-width: "100%"
+#| fig-width: 9
+#| fig-height: 2
+
+make_fact_card <- function(fact_text, fill = "#2c3e50", text_color = "white") {
+  ggplot() +
+    geom_rect(
+        aes(
+            xmin = 0,
+            xmax = 2,
+            ymin = 0,
+            ymax = 1),
+            fill = fill
+            ) +
+    annotate("text",
+            x = 1,
+            y = 0.5,
+            label = str_wrap(fact_text, width = 30),
+            color = text_color,
+            family = "Avenir Next",
+            size = 4,
+            hjust = 0.5, 
+            vjust = 0.5
+    ) +
+    theme_void() +
+    coord_fixed(ratio = 1)
+}
+
+eclipse_facts <- c(
+  "224 solar eclipses",
+  "77 partial",
+  "72 annular",
+  "68 total",
+  "7 hybrids"
+)
+
+colors <- c("#3d3a4b","#d3c0cd","#e3dfff")
+
+text_color_for <- function(fill) {
+  rgb <- col2rgb(fill) / 255
+  luminance <- 0.2126 * rgb["red", ] + 0.7152 * rgb["green", ] + 0.0722 * rgb["blue", ]
+  ifelse(luminance > 0.5, "black", "white")
+}
+
+fills <- rep_len(colors, length(eclipse_facts))
+text_colors <- text_color_for(fills)
+cards <- Map(make_fact_card, eclipse_facts, fills, text_colors)
+
+wrap_plots(cards, ncol = 5)
+
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4
+
 eclipse_data <- eclipse_data %>%
   mutate(
     hover = paste(
@@ -85,6 +136,7 @@ plot_ly(
   marker = list(size = 7, opacity = 0.65)
 ) |>
   layout(
+    autosize = TRUE,
     mapbox = list(
       style = "open-street-map",
       center = list(
@@ -100,9 +152,59 @@ plot_ly(
 
 ::: {.column width="50%"}
 
+
+```{r}
+#| fig-width: 18
+#| fig-height: 8
+
+
+country_eclipse_counts <- country_data %>%
+  count(country, name = "eclipse_count")
+
+plot_ly(
+  country_eclipse_counts,
+  type = "choropleth",
+  locations = ~country,
+  locationmode = "country names",
+  z = ~eclipse_count,
+  text = ~paste(
+    "Country:", country,
+    "<br>Eclipses:", eclipse_count
+  ),
+  hoverinfo = "text",
+  colorscale = list(
+    c(0, 0.01, 1),
+    c("white", "#E3DFFF", "#3D3A4B")
+  ),
+  zmin = 0,
+  zmax = max(country_eclipse_counts$eclipse_count),
+  marker = list(
+    line = list(
+      color = "white",
+      width = 0.5
+    )
+  )
+) %>%
+  layout(
+    autosize = TRUE,
+    title = "Solar Eclipse Density by Country",
+    geo = list(
+      showframe = FALSE,
+      showcoastlines = TRUE,
+      projection = list(
+        type = "natural earth"
+      )
+    )
+  )
+
+```
+
+::::
+
 ```{r}
 #| label: timeline
-#| fig-height: 2
+#| fig-width: 18
+#| fig-height: 8
 
 eclipse_tab <- eclipse_data |>
   rowid_to_column() |>
@@ -142,7 +244,7 @@ pp
 ```{r}
 #| label: average duration time
 #| fig-height: 4
-#| fig-width: 7
+#| fig-width: 10
 
 eclipse_tab <- eclipse_tab |>
   mutate(eclipse_duration = str_replace(Central_duration_min_s, ":", ".")) |>
@@ -197,7 +299,6 @@ p + p2 + plot_layout(ncol = 2,
                     widths = c(0.9, 0.1))
 ```
 
-::::
 
 
 ### Data
