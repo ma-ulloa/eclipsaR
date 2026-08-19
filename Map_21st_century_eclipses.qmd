@@ -17,6 +17,7 @@ library(stringr)
 library(ggplot2)
 library(plotly)
 library(vistime)
+library(tibble)
 ```
 
 ```{r}
