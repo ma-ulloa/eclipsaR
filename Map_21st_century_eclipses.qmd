@@ -33,13 +33,19 @@ library(ggplot2)
 library(plotly)
 library(vistime)
 library(tibble)
+library(patchwork)
 ```
 
 ```{r}
 eclipse_data <- read_csv("data/formatted_eclipses.csv")
 ```
 
+During the 21st century there will be 224 solar eclipses:
 
+- 77 partial 
+- 72 annular
+- 68 total
+- 7 hybrids
 
 :::: {.columns}
 
@@ -59,11 +65,12 @@ eclipse_data <- eclipse_data %>%
   )
 
 eclipse_colors <- c(
-  "Total" = "#000000",
-  "Hybrid" = "#530f1e",
-  "Annular" = "#a44322",
-  "Partial" = "#f8bc04"
+  "Total" = "#3d3a4b",
+  "Hybrid" = "#d3c0cd",
+  "Annular" = "#937666",
+  "Partial" = "#e3dfff"
 )
+
 
 plot_ly(
   eclipse_data,
@@ -98,29 +105,31 @@ plot_ly(
 #| fig-height: 2
 
 eclipse_tab <- eclipse_data |>
-    rowid_to_column() |>
-    mutate(event = paste0("event", rowid),
+  rowid_to_column() |>
+  mutate(
+    event = paste0("event", rowid),
     color = case_when(
-        Type == "Total" ~ "#2c3e50",
-        Type == "Annular" ~"#FFB400",
-        Type == "Partial" ~ "#FDAE54",
-        Type == "Hybrid" ~ "grey90"
-    ))
+      Type == "Total" ~ "#3d3a4b",
+      Type == "Annular" ~ "#937666",
+      Type == "Partial" ~ "#e3dfff",
+      Type == "Hybrid" ~ "d3c0cd"
+    )
+  )
 
 timeline_data <- data.frame(
-    event = eclipse_tab$event,
-    start = eclipse_tab$Date,
-    type = eclipse_tab$Type,
-    color = eclipse_tab$color
+  event = eclipse_tab$event,
+  start = eclipse_tab$Date,
+  type = eclipse_tab$Type,
+  color = eclipse_tab$color
 )
 
-timelineplot <- vistime::vistime(timeline_data,
-                 col.event = "event",
-                 col.group = "type",
-                 optimize_y = T,
-                 show_labels = FALSE,
-                 linewidth = 5
-
+timelineplot <- vistime::vistime(
+  timeline_data,
+  col.event = "event",
+  col.group = "type",
+  optimize_y = T,
+  show_labels = FALSE,
+  linewidth = 5
 )
 
 pp <- plotly::plotly_build(timelineplot)
@@ -128,16 +137,70 @@ pp$x$layout$xaxis$tickfont <- list(size = 12)
 pp$x$layout$yaxis$tickfont <- list(size = 12)
 
 pp
-
 ```
 
 ```{r}
+#| label: average duration time
+#| fig-height: 4
+#| fig-width: 7
+
+eclipse_tab <- eclipse_tab |>
+  mutate(eclipse_duration = str_replace(Central_duration_min_s, ":", ".")) |>
+  mutate(eclipse_duration = as.numeric(eclipse_duration))
+
+eclipse_colors <- c(
+  "Total" = "#3d3a4b",
+  "Hybrid" = "#d3c0cd",
+  "Annular" = "#937666",
+  "Partial" = "#e3dfff"
+)
+
+p <- eclipse_tab |>
+  filter(eclipse_duration != is.na(eclipse_duration)) |>
+  ggplot(aes(x = eclipse_duration, fill = Type)) +
+  geom_histogram(
+    binwidth = 1,
+    color = "white",
+    linewidth = 0.7,
+    position = "identity",
+    alpha = 0.6
+  ) +
+  geom_vline(
+    aes(xintercept = mean(eclipse_duration, na.rm = TRUE)),
+    color = "#e07a5f",
+    linewidth = 0.8,
+    linetype = "dashed"
+  ) +
+  labs(
+    x = "Duration (minutes)",
+    y = "",
+    title = "Eclipse Duration",
+    fill = "Type"
+  ) +
+  scale_fill_manual(values = eclipse_colors) +
+  theme_minimal() +
+  theme(panel.grid.minor = element_blank(), panel.grid.major = element_blank())
+
+p2 <- eclipse_tab |>
+  ggplot(aes(x = "", fill = Type)) +
+  geom_bar(position = "fill") +
+  labs(x = "", 
+       y = "Proportion",
+      title = "",
+      fill = "Type") +
+  scale_fill_manual(values = eclipse_colors) +
+  theme_minimal() +
+  theme(panel.grid.minor = element_blank(), panel.grid.major = element_blank())
 
 
-
-
+p + p2 + plot_layout(ncol = 2,
+                    widths = c(0.9, 0.1))
 ```
 
-:::
-
 ::::
+
+
+### Data
+
+Data used here was shared by  Fred Espenak of NASA's Goddard Space Flight Center [NASA Eclipse Data](https://eclipse.gsfc.nasa.gov/SEcat5/SE2001-2100.html).
+

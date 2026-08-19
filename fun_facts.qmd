@@ -65,10 +65,12 @@ eclipse_facts <- c(
   "Christopher Columbus used his knowledge of a lunar eclipse in 1504 to intimidate Indigenous Jamaicans into continuing to supply his stranded crew, by \"threatening\" to make the moon disappear.",
 "The last total solar eclipse lasting more than 7 minutes was on June 30th, 1973, with the next occurring on July 27th, 2204.",
   "Solar eclipse corona observations in 1919 helped confirm Einstein's general theory of relativity, when starlight was shown to bend around the Sun exactly as predicted.",
-  "Other planets have eclipses too. Jupiter's large moons regularly cast shadows on its cloud tops, an event you can actually watch through a home telescope."
+  "Other planets have eclipses too. Jupiter's large moons regularly cast shadows on its cloud tops, an event you can actually watch through a home telescope.",
+  "In ancient China, people thought a dragon was devouring the sun, and they would bang drums and make loud noises to scare it away."
 )
 
-colors <- c("#2c3e50","#FFB400", "#FDAE54")
+colors <- c("#3d3a4b","#d3c0cd","#e3dfff")
+
 
 text_color_for <- function(fill) {
   rgb <- col2rgb(fill) / 255
