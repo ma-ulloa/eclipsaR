@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ma-ulloa.github.io/eclipsaR/interactive_table.html</loc>
-    <lastmod>2026-08-19T11:54:35.793Z</lastmod>
+    <loc>https://ma-ulloa.github.io/eclipsaR/shiny_dashbard.html</loc>
+    <lastmod>2026-08-19T16:10:47.433Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ma-ulloa.github.io/eclipsaR/individual_examples.html</loc>
+    <lastmod>2026-08-19T16:10:47.433Z</lastmod>
   </url>
   <url>
     <loc>https://ma-ulloa.github.io/eclipsaR/fun_facts.html</loc>
-    <lastmod>2026-08-19T13:15:23.889Z</lastmod>
+    <lastmod>2026-08-19T14:13:43.021Z</lastmod>
   </url>
   <url>
     <loc>https://ma-ulloa.github.io/eclipsaR/Next_eclipse.html</loc>
-    <lastmod>2026-08-19T11:54:35.786Z</lastmod>
+    <lastmod>2026-08-19T07:38:13.873Z</lastmod>
   </url>
   <url>
     <loc>https://ma-ulloa.github.io/eclipsaR/Map_21st_century_eclipses.html</loc>
-    <lastmod>2026-08-19T15:55:09.224Z</lastmod>
+    <lastmod>2026-08-19T16:10:47.425Z</lastmod>
   </url>
   <url>
     <loc>https://ma-ulloa.github.io/eclipsaR/Map_by_country.html</loc>
-    <lastmod>2026-08-19T15:55:09.225Z</lastmod>
+    <lastmod>2026-08-19T14:13:43.019Z</lastmod>
   </url>
   <url>
     <loc>https://ma-ulloa.github.io/eclipsaR/about.html</loc>
-    <lastmod>2026-08-19T15:54:46.907Z</lastmod>
+    <lastmod>2026-08-19T16:10:47.426Z</lastmod>
   </url>
   <url>
     <loc>https://ma-ulloa.github.io/eclipsaR/index.html</loc>
-    <lastmod>2026-08-19T11:54:35.793Z</lastmod>
+    <lastmod>2026-08-19T07:38:13.884Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ma-ulloa.github.io/eclipsaR/interactive_table.html</loc>
+    <lastmod>2026-08-19T14:13:43.022Z</lastmod>
   </url>
 </urlset>
