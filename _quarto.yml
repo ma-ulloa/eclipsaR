@@ -11,6 +11,8 @@ website:
         text: Home
       - href: Map_21st_century_eclipses.qmd
         text: 21st century eclipses
+      - href: interactive_table.qmd
+        text: Eclipse info
       - href: fun_facts.qmd
         text: Fun facts
   page-footer:

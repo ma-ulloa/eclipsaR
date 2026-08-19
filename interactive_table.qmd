@@ -1,6 +1,7 @@
 ---
-title: "Interactive table"
 format: html
+page-layout: full
+
 ---
 
 ```{r}
@@ -15,9 +16,12 @@ df <- read_csv("data/formatted_eclipses.csv")
 ```
 
 ```{r}
+#| column: screen-inset
+
 datatable(
   df,
   filter = "top",
+  width = "90%",
   options = list(
     pageLength = 5,
     scrollX = TRUE
