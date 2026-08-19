@@ -7,7 +7,7 @@ page-layout: full
 ---
 
 :::: {layout="[20,80]"}
-![](data/profiles/Andrea.jpg)
+![](data/profiles/Andrea.png)
 
 ::: {.text-center}
 #### Andrea
