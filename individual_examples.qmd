@@ -1,0 +1,71 @@
+---
+title: "Individual eclipses"
+format: html
+page-layout: full
+execute: 
+  warning: false
+  message: false
+---
+
+
+```{r}
+#| message: false
+
+source("R/plot_magnitude.R")
+source("R/plot_path.R")
+library(tidyverse)
+# Load eclipse data
+eclipse_data <- read_csv("data/formatted_eclipses.csv")
+```
+
+
+## Total eclipse (2026-08-12)
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| results: 'hide'
+#| fig-align: center
+eclipse1_date <- "2026-08-12"
+eclipse1_type <- eclipse_data |> filter(Date == eclipse1_date) |> pull(Type)
+eclipse1_magnitude <- eclipse_data |>
+  filter(Date == eclipse1_date) |>
+  pull(Magnitude)
+
+plot_magnitude(eclipse1_magnitude, eclipse1_type)
+p1 <- plot_path(url = construct_url(eclipse1_date, type = eclipse1_type))
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+p1
+```
+
+## Annular eclipse (2003-05-31)
+```{r}
+#| message: false
+#| echo: false
+#| warning: false
+#| results: 'hide'
+#| fig-align: center
+
+eclipse2_date <- "2003-05-31"
+eclipse2_type <- eclipse_data |> filter(Date == eclipse2_date) |> pull(Type)
+eclipse2_magnitude <- eclipse_data |>
+  filter(Date == eclipse2_date) |>
+  pull(Magnitude)
+
+plot_magnitude(eclipse2_magnitude, eclipse2_type)
+p2 <- plot_path(url = construct_url(eclipse1_date, type = eclipse1_type))
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-align: center
+p2
+```

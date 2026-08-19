@@ -1,0 +1,42 @@
+---
+title: "Plot all eclipses"
+format: html
+---
+
+```{r}
+source("R/plot_magnitude.R")
+source("R/plot_path.R")
+library(tidyverse)
+library(patchwork)
+eclipse_data <- read_csv("data/formatted_eclipses.csv")
+```
+
+::: {.panel-tabset}
+
+```{r}
+#| message: false
+#| results: asis
+#| echo: false
+lapply(1:nrow(eclipse_data), \(x) {
+  cat(glue::glue("\n\n### {eclipse_data[x,]$Date} {eclipse_data[,]$Type} \n\n"))
+  cat("\n \n")
+  . <- eclipse_data[x, ]
+  eclipse_date <- .$Date
+  eclipse_type <- .$Type
+  eclipse_magnitude <- .$Magnitude
+  eclipse_url <- construct_url(eclipse_date, eclipse_type)
+
+  tryCatch(
+    {
+      print(plot_magnitude(eclipse_magnitude, eclipse_type))
+      print(plot_path(eclipse_url))
+    },
+    error = function(e) paste0("Error occurred: ", e$message)
+  )
+
+  cat("\n \n")
+})
+```
+
+
+::: 
