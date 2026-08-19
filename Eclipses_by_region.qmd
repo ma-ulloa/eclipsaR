@@ -1,0 +1,241 @@
+---
+title: "Eclipses by country"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(rnaturalearthhires)
+library(plotly)
+```
+
+```{r}
+#Get eclipse data
+eclipse_data <- read_csv("data/formatted_eclipses.csv")
+```
+
+```{r}
+#Get list of countries
+world <- ne_countries(
+  scale = "medium",
+  returnclass = "sf"
+)
+```
+
+```{r}
+#Create object countries from country name and code in object world
+country_lookup <- world %>%
+  st_drop_geometry() %>%
+  select(
+    country = name,
+    iso_a3
+  ) %>%
+  distinct()
+```
+
+```{r}
+#Replace country name abbreviations
+country_name_replacements <- c(
+  "Marshall Is." = "Marshall Islands",
+  "N. Mariana Is." = "Northern Mariana Islands",
+  "U.S. Virgin Is." = "United States Virgin Islands",
+  "S. Geo. and the Is." = "South Georgia and the South Sandwich Islands",
+  "Br. Indian Ocean Ter." = "British Indian Ocean Territory",
+  "Pitcairn Is." = "Pitcairn Islands",
+  "Falkland Is." = "Falkland Islands",
+  "Cayman Is." = "Cayman Islands",
+  "British Virgin Is." = "British Virgin Islands",
+  "Turks and Caicos Is." = "Turks and Caicos Islands",
+  "S. Sudan" = "South Sudan",
+  "Solomon Is." = "Solomon Islands",
+  "St. Vin. and Gren." = "Saint Vincent and the Grenadines",
+  "St. Kitts and Nevis" = "Saint Kitts and Nevis",
+  "Cook Is." = "Cook Islands",
+  "W. Sahara" = "Western Sahara",
+  "St. Pierre and Miquelon" = "Saint Pierre and Miquelon",
+  "Wallis and Futuna Is." = "Wallis and Futuna",
+  "Fr. Polynesia" = "French Polynesia",
+  "Fr. S. Antarctic Lands" = "French Southern Territories",
+  "Eq. Guinea" = "Equatorial Guinea",
+  "Dominican Rep." = "Dominican Republic",
+  "Faeroe Is." = "Faroe Islands",
+  "N. Cyprus" = "Northern Cyprus",
+  "Dem. Rep. Congo" = "Democratic Republic of the Congo",
+  "Central African Rep." = "Central African Republic",
+  "Bosnia and Herz." = "Bosnia and Herzegovina",
+  "Indian Ocean Ter." = "Indian Ocean Territories",
+  "Heard I. and McDonald Is." = "Heard Island and McDonald Islands",
+  "Ashmore and Cartier Is." = "Ashmore and Cartier Islands",
+  "Antigua and Barb." = "Antigua and Barbuda"
+)
+
+country_lookup <- country_lookup %>%
+  mutate(
+    country = recode(
+      country,
+      !!!country_name_replacements
+    )
+  )
+```
+
+```{r}
+states <- ne_states(
+  returnclass = "sf"
+)
+```
+
+```{r}
+#Create object state_lookup with columns area and country from object states
+state_lookup <- states %>%
+  st_drop_geometry() %>%
+  transmute(
+    area = name,
+    country = admin
+  ) %>%
+  distinct()
+```
+
+```{r}
+#Separate the countries depending on the type of eclipse after which they are listed using |
+eclipse_areas <- eclipse_data %>%
+  select(Date, `Geographical_area`) %>%
+  mutate(
+    `Geographical_area` = str_replace_all(
+      `Geographical_area`,
+      "(Total|Annular|Hybrid|Partial):",
+      "|\\1:"
+    )
+  )
+```
+
+```{r}
+#Separate types from the same date into different rows
+eclipse_areas <- eclipse_areas %>%
+  separate_rows(
+    `Geographical_area`,
+    sep = "\\|"
+  ) %>%
+  filter(`Geographical_area` != "")
+```
+
+```{r}
+#Separate eclipse type and area into two columns
+eclipse_areas <- eclipse_areas %>%
+  mutate(
+    eclipse_type = str_extract(
+      `Geographical_area`,
+      "^(Total|Annular|Hybrid|Partial)"
+    ),
+    area = str_remove(
+      `Geographical_area`,
+      "^(Total|Annular|Hybrid|Partial):\\s*"
+    )
+  )
+```
+
+```{r}
+eclipse_areas <- eclipse_areas %>%
+  filter(eclipse_type == "Total" | eclipse_type == "Annular")
+```
+
+```{r}
+# Put each country into a different row
+
+# Countries that contain " and " but should NOT be split
+exceptions <- c(
+  "Bosnia and Herzegovina",
+  "Antigua and Barbuda",
+  "Sao Tome and Principe",
+  "Saint Kitts and Nevis",
+  "Saint Vincent and the Grenadines",
+  "Trinidad and Tobago"
+)
+
+eclipse_areas <- eclipse_areas %>%
+  # Temporarily protect exceptions
+  mutate(
+    area = purrr::reduce(
+      exceptions,
+      ~ str_replace_all(
+        .x,
+        fixed(.y),
+        str_replace_all(.y, " and ", "___AND___")
+      ),
+      .init = area
+    )
+  ) %>%
+  
+  # Treat "and" as a separator
+  mutate(
+    area = str_replace_all(
+      area,
+      "\\s+and\\s+",
+      ", "
+    )
+  ) %>%
+  
+  # Split into rows
+  separate_rows(
+    area,
+    sep = ",\\s*"
+  ) %>%
+  
+  # Restore "and"
+  mutate(
+    area = str_replace_all(
+      area,
+      "___AND___",
+      " and "
+    )
+  ) %>%
+  
+  # Remove leading/trailing whitespace
+  mutate(
+    area = str_trim(area)
+  ) %>%
+  
+  # Standardize country names
+  mutate(
+    area = recode(
+      area,
+      "Cape Verde" = "Cabo Verde",
+      "Czech Republic" = "Czechia",
+      "East Timor" = "Timor-Leste",
+      "Eswatini" = "eSwatini"
+    )
+  )
+```
+
+
+```{r}
+eclipse_country_info <- eclipse_areas %>%
+  left_join(
+    country_lookup %>%
+      select(country) %>%
+      mutate(area = country),
+    by = "area"
+  ) %>%
+  rename(country_direct = country) %>%
+  
+  left_join(
+    state_lookup %>%
+      select(area, country) %>%
+      rename(country_state = country),
+    by = "area"
+  ) %>%
+  
+  mutate(
+    country = coalesce(country_direct, country_state)
+  ) %>%
+  
+  select(-country_direct, -country_state)
+```
+
+
+```{r}
+problematic_names <- eclipse_country_info %>%
+  filter(is.na(country))
+```
