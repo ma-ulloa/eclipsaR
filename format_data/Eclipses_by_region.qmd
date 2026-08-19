@@ -81,6 +81,7 @@ country_lookup <- country_lookup %>%
   )
 ```
 
+
 ```{r}
 states <- ne_states(
   returnclass = "sf"
@@ -96,6 +97,12 @@ state_lookup <- states %>%
     country = admin
   ) %>%
   distinct()
+```
+
+```{r}
+#Create separate table for USA because specified areas are usually there
+usa_state_lookup <- state_lookup %>%
+  filter(country == "United States of America")
 ```
 
 ```{r}
@@ -137,28 +144,55 @@ eclipse_areas <- eclipse_areas %>%
 ```
 
 ```{r}
+#Keep only Total and Annular eclipses
 eclipse_areas <- eclipse_areas %>%
   filter(eclipse_type == "Total" | eclipse_type == "Annular")
 ```
+
 
 ```{r}
 # Put each country into a different row
 
 # Countries that contain " and " but should NOT be split
-exceptions <- c(
+and_exceptions <- c(
   "Bosnia and Herzegovina",
   "Antigua and Barbuda",
   "Sao Tome and Principe",
   "Saint Kitts and Nevis",
   "Saint Vincent and the Grenadines",
-  "Trinidad and Tobago"
+  "Trinidad and Tobago",
+  "Andaman and Nicobar Islands",
+  "Turks and Caicos Islands"
+)
+
+NSEW_exceptions <- c(
+  "Central African Republic",
+  "North Carolina",
+  "North Dakota",
+  "North Pole",
+  "North Korea",
+  "North Macedonia",
+  "Northern Cyprus",
+  "Northern Mariana Islands",
+  "Northern Territory",
+  "Northwest Territories",
+  "South Africa",
+  "South Australia",
+  "South Carolina",
+  "South Dakota",
+  "South Georgia and the South Sandwich Islands",
+  "South Korea",
+  "South Sudan",
+  "Southeastern Polynesia",
+  "Western Java",
+  "Western Sahara"
 )
 
 eclipse_areas <- eclipse_areas %>%
-  # Temporarily protect exceptions
+  # Temporarily protect "and" exceptions
   mutate(
     area = purrr::reduce(
-      exceptions,
+      and_exceptions,
       ~ str_replace_all(
         .x,
         fixed(.y),
@@ -196,15 +230,71 @@ eclipse_areas <- eclipse_areas %>%
   mutate(
     area = str_trim(area)
   ) %>%
+
+  #Deal separately with Borneo and Southeastern Polynesia because it spans three countries
+  mutate(
+  area = if_else(
+    area == "Borneo",
+    "Indonesia, Malaysia, Brunei",
+    area
+  )
+) %>%
+
+  mutate(
+  area = if_else(
+    area == "Southeastern Polynesia",
+    "French Polynesia, Easter Island, Pitcairn Islands",
+    area
+  )
+) %>%
+
+# Split those multi-country areas into separate rows
+separate_rows(
+  area,
+  sep = ",\\s*"
+) %>%
   
-  # Standardize country names
+  # Standardize country/state names
   mutate(
     area = recode(
       area,
       "Cape Verde" = "Cabo Verde",
       "Czech Republic" = "Czechia",
       "East Timor" = "Timor-Leste",
-      "Eswatini" = "eSwatini"
+      "Eswatini" = "eSwatini",
+      "Andaman and Nicobar Islands" = "Andaman and Nicobar",
+      "the Northern Mariana Islands" = "Northern Mariana Islands",
+      "Yucatán Peninsula" = "Yucatán",
+      "French Guiana" = "Guyane française",
+      "Maine Eastern Canada" = "Eastern Canada",
+      "Prince Edward Islands" = "Prince Edward Island",
+      "northeastern Scotland" = "United Kingdom",
+      "Russian Far East" = "Eastern Russia",
+      "Southern Primorsky Krai of Russia" = "Primor'ye",
+      "Kayangel Atoll" = "Kayangel",
+      "Namibian Panhandle" = "Caprivi",
+      "Tuamotu Archipelago" = "Tuamotu-Gambier",
+      "Western Wilkes Land" = "Antarctica",
+      "Wilkes Land" = "Antarctica",
+      "Northern and Eastern Russia" = "Russia",
+      "Western and Central Canada" = "Canada",
+      "Eastern Canary Islands" = "Spain",
+      "Canary Islands" = "Spain"
+    )
+  ) %>%
+  
+  # Remove NSEW descriptors except for specified exceptions
+  mutate(
+    area = if_else(
+      area %in% NSEW_exceptions,
+      area,
+      str_remove(
+        area,
+        regex(
+          "^(northern|north|southern|south|eastern|east|western|west|northeastern|northeast|northwestern|northwest|southeastern|southwestern|central)\\s+",
+          ignore_case = TRUE
+        )
+      )
     )
   )
 ```
@@ -221,6 +311,13 @@ eclipse_country_info <- eclipse_areas %>%
   rename(country_direct = country) %>%
   
   left_join(
+    usa_state_lookup %>%
+      select(area, country) %>%
+      rename(country_usa_state = country),
+    by = "area"
+  ) %>%
+
+  left_join(
     state_lookup %>%
       select(area, country) %>%
       rename(country_state = country),
@@ -228,14 +325,57 @@ eclipse_country_info <- eclipse_areas %>%
   ) %>%
   
   mutate(
-    country = coalesce(country_direct, country_state)
+    country = coalesce(country_direct, country_usa_state, country_state)
   ) %>%
   
-  select(-country_direct, -country_state)
+  select(-country_direct, -country_usa_state, -country_state)
 ```
 
+```{r}
+#Manually set problematic names
+problem_area_to_country <- c(
+  "Annobón Natural Reserve" = "Equatorial Guinea",
+  "Bounty Islands" = "New Zealand",
+  "Chatham Island" = "New Zealand",
+  "Cocos Islands" = "Australia",
+  "Crozet Islands" = "France",
+  "Easter Island" = "Chile",
+  "Kerguelen Islands" = "France",
+  "Louisiade Archipelago" = "Papua New Guinea",
+  "Nanpō Islands" = "Japan",
+  "Republic of the Congo" = "Republic of the Congo",
+  "Réunion" = "France",
+  "Ryukyu Islands" = "Japan",
+  "Stewart Island" = "New Zealand",
+  "Sumatra" = "Indonesia",
+  "Tibet" = "China",
+  "Western Java" = "Indonesia"
+)
+
+eclipse_country_info <- eclipse_country_info %>%
+  mutate(
+    country = coalesce(
+      country,
+      unname(problem_area_to_country[area])
+    )
+  )
+```
 
 ```{r}
 problematic_names <- eclipse_country_info %>%
   filter(is.na(country))
+
+sort(unique(problematic_names$area))
 ```
+
+```{r}
+reduced_country_table <- eclipse_country_info %>%
+  select(Date, eclipse_type, country) %>%
+  distinct()
+```
+
+```{r}
+write_csv(reduced_country_table, "data/total_eclipses_by_country.csv")
+```
+
+

@@ -1,0 +1,849 @@
+Date,eclipse_type,country
+2001-06-21,Total,Angola
+2001-06-21,Total,Zambia
+2001-06-21,Total,Zimbabwe
+2001-06-21,Total,Mozambique
+2001-06-21,Total,Madagascar
+2001-12-14,Annular,Nicaragua
+2001-12-14,Annular,Costa Rica
+2002-06-10,Annular,Indonesia
+2002-06-10,Annular,Palau
+2002-06-10,Annular,Northern Mariana Islands
+2002-06-10,Annular,Mexico
+2002-12-04,Total,Angola
+2002-12-04,Total,Botswana
+2002-12-04,Total,Zimbabwe
+2002-12-04,Total,South Africa
+2002-12-04,Total,Mozambique
+2002-12-04,Total,Australia
+2003-05-31,Annular,Greenland
+2003-05-31,Annular,Iceland
+2003-05-31,Annular,United Kingdom
+2003-05-31,Annular,Faroe Islands
+2003-11-23,Total,Antarctica
+2005-04-08,Total,NA
+2005-04-08,Annular,New Zealand
+2005-04-08,Annular,French Polynesia
+2005-04-08,Annular,Panama
+2005-04-08,Annular,Colombia
+2005-04-08,Annular,Venezuela
+2005-10-03,Annular,Portugal
+2005-10-03,Annular,Spain
+2005-10-03,Annular,Algeria
+2005-10-03,Annular,Tunisia
+2005-10-03,Annular,Libya
+2005-10-03,Annular,Chad
+2005-10-03,Annular,Sudan
+2005-10-03,Annular,Ethiopia
+2005-10-03,Annular,Kenya
+2005-10-03,Annular,Somalia
+2006-03-29,Total,Brazil
+2006-03-29,Total,Ghana
+2006-03-29,Total,Togo
+2006-03-29,Total,Benin
+2006-03-29,Total,Nigeria
+2006-03-29,Total,Niger
+2006-03-29,Total,Libya
+2006-03-29,Total,Egypt
+2006-03-29,Total,Turkey
+2006-03-29,Total,Georgia
+2006-03-29,Total,Russia
+2006-03-29,Total,Kazakhstan
+2006-09-22,Annular,Guyana
+2006-09-22,Annular,Suriname
+2006-09-22,Annular,France
+2008-02-07,Annular,Antarctica
+2008-08-01,Total,Canada
+2008-08-01,Total,Greenland
+2008-08-01,Total,Russia
+2008-08-01,Total,Mongolia
+2008-08-01,Total,China
+2009-01-26,Annular,Australia
+2009-01-26,Annular,Indonesia
+2009-01-26,Annular,Malaysia
+2009-01-26,Annular,Brunei
+2009-07-22,Total,Pakistan
+2009-07-22,Total,India
+2009-07-22,Total,Nepal
+2009-07-22,Total,Bhutan
+2009-07-22,Total,Bangladesh
+2009-07-22,Total,Myanmar
+2009-07-22,Total,China
+2009-07-22,Total,Japan
+2010-01-15,Annular,Central African Republic
+2010-01-15,Annular,Democratic Republic of the Congo
+2010-01-15,Annular,Uganda
+2010-01-15,Annular,Maldives
+2010-01-15,Annular,India
+2010-01-15,Annular,Pakistan
+2010-01-15,Annular,Sri Lanka
+2010-01-15,Annular,Myanmar
+2010-01-15,Annular,China
+2010-07-11,Total,Chile
+2010-07-11,Total,Argentina
+2010-07-11,Total,French Polynesia
+2010-07-11,Total,Pitcairn Islands
+2012-05-20,Annular,China
+2012-05-20,Annular,Hong Kong
+2012-05-20,Annular,Macau S.A.R
+2012-05-20,Annular,Japan
+2012-05-20,Annular,United States of America
+2012-11-13,Total,Australia
+2013-05-10,Annular,Australia
+2013-05-10,Annular,Papua New Guinea
+2013-05-10,Annular,Solomon Islands
+2013-05-10,Annular,Kiribati
+2013-11-03,Total,Gabon
+2013-11-03,Total,Republic of the Congo
+2013-11-03,Total,Democratic Republic of the Congo
+2013-11-03,Total,Uganda
+2013-11-03,Total,Kenya
+2013-11-03,Total,Ethiopia
+2014-04-29,Annular,Antarctica
+2015-03-20,Total,Faroe Islands
+2015-03-20,Total,Norway
+2015-03-20,Total,NA
+2016-03-09,Total,Indonesia
+2016-03-09,Total,Micronesia
+2016-03-09,Total,Marshall Islands
+2016-09-01,Annular,Gabon
+2016-09-01,Annular,Congo
+2016-09-01,Annular,Democratic Republic of the Congo
+2016-09-01,Annular,Tanzania
+2016-09-01,Annular,Mozambique
+2016-09-01,Annular,Madagascar
+2016-09-01,Annular,France
+2017-02-26,Annular,Chile
+2017-02-26,Annular,Argentina
+2017-02-26,Annular,Angola
+2017-02-26,Annular,Democratic Republic of the Congo
+2017-08-21,Total,United States of America
+2017-08-21,Total,Georgia
+2019-07-02,Total,Pitcairn Islands
+2019-07-02,Total,French Polynesia
+2019-07-02,Total,Chile
+2019-07-02,Total,Argentina
+2019-12-26,Annular,Saudi Arabia
+2019-12-26,Annular,Qatar
+2019-12-26,Annular,United Arab Emirates
+2019-12-26,Annular,Oman
+2019-12-26,Annular,India
+2019-12-26,Annular,Sri Lanka
+2019-12-26,Annular,Malaysia
+2019-12-26,Annular,Indonesia
+2019-12-26,Annular,Singapore
+2019-12-26,Annular,Northern Mariana Islands
+2019-12-26,Annular,Guam
+2020-06-21,Annular,Democratic Republic of the Congo
+2020-06-21,Annular,South Sudan
+2020-06-21,Annular,Ethiopia
+2020-06-21,Annular,Eritrea
+2020-06-21,Annular,Yemen
+2020-06-21,Annular,Saudi Arabia
+2020-06-21,Annular,Oman
+2020-06-21,Annular,Pakistan
+2020-06-21,Annular,India
+2020-06-21,Annular,China
+2020-06-21,Annular,Taiwan
+2020-12-14,Total,Chile
+2020-12-14,Total,Argentina
+2021-06-10,Annular,Canada
+2021-06-10,Annular,Greenland
+2021-06-10,Annular,NA
+2021-06-10,Annular,Russia
+2021-12-04,Total,Antarctica
+2023-04-20,Total,Australia
+2023-04-20,Total,Timor-Leste
+2023-04-20,Total,Indonesia
+2023-10-14,Annular,United States of America
+2023-10-14,Annular,Mexico
+2023-10-14,Annular,Belize
+2023-10-14,Annular,Honduras
+2023-10-14,Annular,Nicaragua
+2023-10-14,Annular,Costa Rica
+2023-10-14,Annular,Panama
+2023-10-14,Annular,Colombia
+2023-10-14,Annular,Brazil
+2024-04-08,Total,Mexico
+2024-04-08,Total,United States of America
+2024-04-08,Total,Canada
+2024-10-02,Annular,Chile
+2024-10-02,Annular,Argentina
+2026-02-17,Annular,Antarctica
+2026-08-12,Total,Greenland
+2026-08-12,Total,Iceland
+2026-08-12,Total,Spain
+2026-08-12,Total,Portugal
+2027-02-06,Annular,Chile
+2027-02-06,Annular,Argentina
+2027-02-06,Annular,NA
+2027-08-02,Total,Morocco
+2027-08-02,Total,Spain
+2027-08-02,Total,Algeria
+2027-08-02,Total,Tunisia
+2027-08-02,Total,Libya
+2027-08-02,Total,Egypt
+2027-08-02,Total,Saudi Arabia
+2027-08-02,Total,Yemen
+2027-08-02,Total,Somalia
+2028-01-26,Annular,Ecuador
+2028-01-26,Annular,Peru
+2028-01-26,Annular,Colombia
+2028-01-26,Annular,Brazil
+2028-01-26,Annular,France
+2028-01-26,Annular,Portugal
+2028-01-26,Annular,Spain
+2028-07-22,Total,Australia
+2028-07-22,Total,New Zealand
+2030-06-01,Annular,Algeria
+2030-06-01,Annular,Tunisia
+2030-06-01,Annular,Libya
+2030-06-01,Annular,Malta
+2030-06-01,Annular,Greece
+2030-06-01,Annular,Turkey
+2030-06-01,Annular,Bulgaria
+2030-06-01,Annular,Ukraine
+2030-06-01,Annular,Russia
+2030-06-01,Annular,Kazakhstan
+2030-06-01,Annular,China
+2030-06-01,Annular,Japan
+2030-11-25,Total,Namibia
+2030-11-25,Total,Botswana
+2030-11-25,Total,South Africa
+2030-11-25,Total,Lesotho
+2030-11-25,Total,Australia
+2031-05-21,Annular,Angola
+2031-05-21,Annular,Zambia
+2031-05-21,Annular,Democratic Republic of the Congo
+2031-05-21,Annular,Tanzania
+2031-05-21,Annular,India
+2031-05-21,Annular,Sri Lanka
+2031-05-21,Annular,Thailand
+2031-05-21,Annular,Malaysia
+2031-05-21,Annular,Indonesia
+2031-11-14,Annular,Panama
+2032-05-09,Annular,NA
+2033-03-30,Total,Russia
+2033-03-30,Total,United States of America
+2034-03-20,Total,Nigeria
+2034-03-20,Total,Cameroon
+2034-03-20,Total,Chad
+2034-03-20,Total,Sudan
+2034-03-20,Total,Egypt
+2034-03-20,Total,Saudi Arabia
+2034-03-20,Total,Kuwait
+2034-03-20,Total,Iran
+2034-03-20,Total,Afghanistan
+2034-03-20,Total,Pakistan
+2034-03-20,Total,India
+2034-03-20,Total,China
+2034-09-12,Annular,Chile
+2034-09-12,Annular,Bolivia
+2034-09-12,Annular,Argentina
+2034-09-12,Annular,Paraguay
+2034-09-12,Annular,Brazil
+2035-03-09,Annular,New Zealand
+2035-09-02,Total,China
+2035-09-02,Total,North Korea
+2035-09-02,Total,Japan
+2037-07-13,Total,Australia
+2037-07-13,Total,New Zealand
+2038-01-05,Annular,Cuba
+2038-01-05,Annular,Haiti
+2038-01-05,Annular,Dominican Republic
+2038-01-05,Annular,Saint Lucia
+2038-01-05,Annular,Saint Vincent and the Grenadines
+2038-01-05,Annular,Barbados
+2038-01-05,Annular,Liberia
+2038-01-05,Annular,Côte d'Ivoire
+2038-01-05,Annular,Ghana
+2038-01-05,Annular,Togo
+2038-01-05,Annular,Benin
+2038-01-05,Annular,Nigeria
+2038-01-05,Annular,Niger
+2038-01-05,Annular,Chad
+2038-01-05,Annular,Libya
+2038-01-05,Annular,Sudan
+2038-01-05,Annular,Egypt
+2038-07-02,Annular,Colombia
+2038-07-02,Annular,Venezuela
+2038-07-02,Annular,Grenada
+2038-07-02,Annular,Barbados
+2038-07-02,Annular,Western Sahara
+2038-07-02,Annular,Mauritania
+2038-07-02,Annular,Mali
+2038-07-02,Annular,Algeria
+2038-07-02,Annular,Niger
+2038-07-02,Annular,Chad
+2038-07-02,Annular,Sudan
+2038-07-02,Annular,South Sudan
+2038-07-02,Annular,Ethiopia
+2038-07-02,Annular,Kenya
+2038-07-02,Annular,Somalia
+2038-12-26,Total,Australia
+2038-12-26,Total,New Zealand
+2039-06-21,Annular,United States of America
+2039-06-21,Annular,Canada
+2039-06-21,Annular,Greenland
+2039-06-21,Annular,Norway
+2039-06-21,Annular,Sweden
+2039-06-21,Annular,Finland
+2039-06-21,Annular,Estonia
+2039-06-21,Annular,Latvia
+2039-06-21,Annular,Lithuania
+2039-06-21,Annular,Russia
+2039-06-21,Annular,Belarus
+2039-12-15,Total,Antarctica
+2041-04-30,Total,Angola
+2041-04-30,Total,Democratic Republic of the Congo
+2041-04-30,Total,Uganda
+2041-04-30,Total,Kenya
+2041-04-30,Total,Somalia
+2041-10-25,Annular,Mongolia
+2041-10-25,Annular,China
+2041-10-25,Annular,North Korea
+2041-10-25,Annular,Japan
+2041-10-25,Annular,Marshall Islands
+2041-10-25,Annular,Kiribati
+2042-04-20,Total,Indonesia
+2042-04-20,Total,Malaysia
+2042-04-20,Total,Brunei
+2042-04-20,Total,Philippines
+2042-10-14,Annular,India
+2042-10-14,Annular,Thailand
+2042-10-14,Annular,Malaysia
+2042-10-14,Annular,Indonesia
+2042-10-14,Annular,Timor-Leste
+2042-10-14,Annular,Australia
+2042-10-14,Annular,New Zealand
+2043-04-09,Total,Russia
+2043-10-03,Annular,NA
+2044-02-28,Annular,NA
+2044-08-23,Total,Greenland
+2044-08-23,Total,Canada
+2044-08-23,Total,United States of America
+2045-02-16,Annular,New Zealand
+2045-02-16,Annular,Cook Islands
+2045-02-16,Annular,French Polynesia
+2045-02-16,Annular,Kiribati
+2045-08-12,Total,United States of America
+2045-08-12,Total,Georgia
+2045-08-12,Total,Bahamas
+2045-08-12,Total,Turks and Caicos Islands
+2045-08-12,Total,Dominican Republic
+2045-08-12,Total,Haiti
+2045-08-12,Total,Venezuela
+2045-08-12,Total,Trinidad and Tobago
+2045-08-12,Total,Guyana
+2045-08-12,Total,Suriname
+2045-08-12,Total,France
+2045-08-12,Total,Brazil
+2046-02-05,Annular,Indonesia
+2046-02-05,Annular,Papua New Guinea
+2046-02-05,Annular,Solomon Islands
+2046-02-05,Annular,Kiribati
+2046-02-05,Annular,United States of America
+2046-08-02,Total,Brazil
+2046-08-02,Total,Angola
+2046-08-02,Total,Namibia
+2046-08-02,Total,Botswana
+2046-08-02,Total,South Africa
+2046-08-02,Total,eSwatini
+2046-08-02,Total,Mozambique
+2046-08-02,Total,France
+2048-06-11,Annular,United States of America
+2048-06-11,Annular,Canada
+2048-06-11,Annular,Greenland
+2048-06-11,Annular,Iceland
+2048-06-11,Annular,Faroe Islands
+2048-06-11,Annular,Norway
+2048-06-11,Annular,Sweden
+2048-06-11,Annular,Estonia
+2048-06-11,Annular,Latvia
+2048-06-11,Annular,Lithuania
+2048-06-11,Annular,Belarus
+2048-06-11,Annular,Russia
+2048-06-11,Annular,Ukraine
+2048-06-11,Annular,Kazakhstan
+2048-06-11,Annular,Uzbekistan
+2048-06-11,Annular,Turkmenistan
+2048-06-11,Annular,Tajikistan
+2048-06-11,Annular,Afghanistan
+2048-06-11,Annular,Pakistan
+2048-12-05,Total,Chile
+2048-12-05,Total,Argentina
+2048-12-05,Total,Namibia
+2048-12-05,Total,Botswana
+2049-05-31,Annular,Peru
+2049-05-31,Annular,Ecuador
+2049-05-31,Annular,Colombia
+2049-05-31,Annular,Brazil
+2049-05-31,Annular,Venezuela
+2049-05-31,Annular,Guyana
+2049-05-31,Annular,Suriname
+2049-05-31,Annular,Cabo Verde
+2049-05-31,Annular,Senegal
+2049-05-31,Annular,Gambia
+2049-05-31,Annular,Mali
+2049-05-31,Annular,Guinea
+2049-05-31,Annular,Burkina Faso
+2049-05-31,Annular,Côte d'Ivoire
+2049-05-31,Annular,Ghana
+2049-05-31,Annular,Togo
+2049-05-31,Annular,Benin
+2049-05-31,Annular,Nigeria
+2049-05-31,Annular,Cameroon
+2049-05-31,Annular,Congo
+2049-05-31,Annular,Democratic Republic of the Congo
+2049-05-31,Annular,Burundi
+2049-05-31,Annular,Tanzania
+2049-11-25,Total,Indonesia
+2049-11-25,Annular,Saudi Arabia
+2049-11-25,Annular,Yemen
+2049-11-25,Annular,Micronesia
+2052-03-30,Total,Mexico
+2052-03-30,Total,United States of America
+2052-03-30,Total,Georgia
+2052-09-22,Annular,Indonesia
+2052-09-22,Annular,Timor-Leste
+2052-09-22,Annular,Australia
+2052-09-22,Annular,New Caledonia
+2053-03-20,Annular,Indonesia
+2053-09-12,Total,Spain
+2053-09-12,Total,Morocco
+2053-09-12,Total,Algeria
+2053-09-12,Total,Tunisia
+2053-09-12,Total,Libya
+2053-09-12,Total,Egypt
+2053-09-12,Total,Saudi Arabia
+2053-09-12,Total,Yemen
+2053-09-12,Total,Maldives
+2053-09-12,Total,Indonesia
+2055-07-24,Total,South Africa
+2056-01-16,Annular,Marshall Islands
+2056-01-16,Annular,Mexico
+2056-01-16,Annular,United States of America
+2056-07-12,Annular,Kiribati
+2056-07-12,Annular,Ecuador
+2056-07-12,Annular,Colombia
+2056-07-12,Annular,Peru
+2056-07-12,Annular,Brazil
+2057-01-05,Total,NA
+2057-07-01,Annular,China
+2057-07-01,Annular,Mongolia
+2057-07-01,Annular,Russia
+2057-07-01,Annular,United States of America
+2057-07-01,Annular,Rwanda
+2057-07-01,Annular,Ghana
+2057-07-01,Annular,Papua New Guinea
+2057-07-01,Annular,Zambia
+2057-07-01,Annular,Kenya
+2057-07-01,Annular,Sierra Leone
+2057-07-01,Annular,Solomon Islands
+2057-07-01,Annular,Fiji
+2057-07-01,Annular,American Samoa
+2057-07-01,Annular,Canada
+2057-12-26,Total,Antarctica
+2059-05-11,Total,Ecuador
+2059-05-11,Total,Peru
+2059-05-11,Total,Colombia
+2059-05-11,Total,Brazil
+2059-11-05,Annular,France
+2059-11-05,Annular,Spain
+2059-11-05,Annular,Andorra
+2059-11-05,Annular,Italy
+2059-11-05,Annular,Libya
+2059-11-05,Annular,Egypt
+2059-11-05,Annular,Sudan
+2059-11-05,Annular,Eritrea
+2059-11-05,Annular,Yemen
+2059-11-05,Annular,Ethiopia
+2059-11-05,Annular,Somalia
+2059-11-05,Annular,Maldives
+2059-11-05,Annular,Indonesia
+2060-04-30,Total,Côte d'Ivoire
+2060-04-30,Total,Ghana
+2060-04-30,Total,Togo
+2060-04-30,Total,Benin
+2060-04-30,Total,Burkina Faso
+2060-04-30,Total,Nigeria
+2060-04-30,Total,Niger
+2060-04-30,Total,Chad
+2060-04-30,Total,Libya
+2060-04-30,Total,Egypt
+2060-04-30,Total,Cyprus
+2060-04-30,Total,Turkey
+2060-04-30,Total,Syria
+2060-04-30,Total,Armenia
+2060-04-30,Total,Azerbaijan
+2060-04-30,Total,Iran
+2060-04-30,Total,Turkmenistan
+2060-04-30,Total,Uzbekistan
+2060-04-30,Total,Kazakhstan
+2060-04-30,Total,Kyrgyzstan
+2060-04-30,Total,China
+2060-10-24,Annular,Guinea
+2060-10-24,Annular,Sierra Leone
+2060-10-24,Annular,Liberia
+2060-10-24,Annular,Côte d'Ivoire
+2060-10-24,Annular,Equatorial Guinea
+2060-10-24,Annular,Angola
+2060-10-24,Annular,Namibia
+2060-10-24,Annular,Botswana
+2060-10-24,Annular,South Africa
+2061-04-20,Total,Ukraine
+2061-04-20,Total,Russia
+2061-04-20,Total,Kazakhstan
+2061-04-20,Total,Norway
+2061-10-13,Annular,Chile
+2061-10-13,Annular,Argentina
+2061-10-13,Annular,Falkland Islands
+2061-10-13,Annular,Antarctica
+2063-02-28,Annular,Canada
+2063-02-28,Annular,Indonesia
+2063-02-28,Annular,Malaysia
+2063-02-28,Annular,Brunei
+2063-02-28,Annular,Philippines
+2063-08-24,Total,China
+2063-08-24,Total,Mongolia
+2063-08-24,Total,North Korea
+2063-08-24,Total,Russia
+2063-08-24,Total,Japan
+2063-08-24,Total,French Polynesia
+2064-02-17,Annular,Congo
+2064-02-17,Annular,Angola
+2064-02-17,Annular,Democratic Republic of the Congo
+2064-02-17,Annular,Zambia
+2064-02-17,Annular,Tanzania
+2064-02-17,Annular,Seychelles
+2064-02-17,Annular,India
+2064-02-17,Annular,Nepal
+2064-02-17,Annular,Bangladesh
+2064-02-17,Annular,Bhutan
+2064-02-17,Annular,China
+2064-08-12,Total,Chile
+2064-08-12,Total,Argentina
+2066-06-22,Annular,Russia
+2066-06-22,Annular,United States of America
+2066-06-22,Annular,Canada
+2066-06-22,Annular,Portugal
+2066-12-17,Total,Australia
+2066-12-17,Total,New Zealand
+2067-06-11,Annular,Kiribati
+2067-06-11,Annular,Ecuador
+2067-06-11,Annular,Peru
+2067-06-11,Annular,Colombia
+2067-06-11,Annular,Brazil
+2067-12-06,Total,Brazil
+2067-12-06,Annular,Mexico
+2067-12-06,Annular,Guatemala
+2067-12-06,Annular,Belize
+2067-12-06,Annular,Honduras
+2067-12-06,Annular,Nicaragua
+2067-12-06,Annular,Colombia
+2067-12-06,Annular,Venezuela
+2067-12-06,Annular,Brazil
+2067-12-06,Annular,Guyana
+2067-12-06,Annular,Nigeria
+2067-12-06,Annular,Cameroon
+2067-12-06,Annular,Chad
+2067-12-06,Annular,Sudan
+2068-05-31,Total,Australia
+2068-05-31,Total,New Zealand
+2070-04-11,Total,Sri Lanka
+2070-04-11,Total,India
+2070-04-11,Total,Myanmar
+2070-04-11,Total,Thailand
+2070-04-11,Total,Cambodia
+2070-04-11,Total,Laos
+2070-04-11,Total,Vietnam
+2070-04-11,Total,Taiwan
+2070-04-11,Total,Japan
+2070-10-04,Annular,Angola
+2070-10-04,Annular,Zambia
+2070-10-04,Annular,Zimbabwe
+2070-10-04,Annular,Mozambique
+2070-10-04,Annular,Madagascar
+2071-03-31,Annular,Chile
+2071-03-31,Annular,Argentina
+2071-03-31,Annular,Brazil
+2071-03-31,Annular,Congo
+2071-03-31,Annular,Democratic Republic of the Congo
+2071-09-23,Total,Mexico
+2071-09-23,Total,Colombia
+2071-09-23,Total,Venezuela
+2071-09-23,Total,Guyana
+2071-09-23,Total,Brazil
+2071-09-23,Total,Suriname
+2071-09-23,Total,France
+2072-09-12,Total,Sierra Leone
+2072-09-12,Total,Zambia
+2072-09-12,Total,Rwanda
+2072-09-12,Total,Ghana
+2072-09-12,Total,Sudan
+2072-09-12,Total,Papua New Guinea
+2072-09-12,Total,Fiji
+2072-09-12,Total,Russia
+2073-08-03,Total,Chile
+2073-08-03,Total,Argentina
+2074-01-27,Annular,Chad
+2074-01-27,Annular,Sudan
+2074-01-27,Annular,South Sudan
+2074-01-27,Annular,Ethiopia
+2074-01-27,Annular,Somalia
+2074-01-27,Annular,Maldives
+2074-01-27,Annular,Sri Lanka
+2074-01-27,Annular,India
+2074-01-27,Annular,Myanmar
+2074-01-27,Annular,Thailand
+2074-01-27,Annular,Laos
+2074-01-27,Annular,Vietnam
+2074-01-27,Annular,China
+2074-01-27,Annular,Japan
+2074-07-24,Annular,Maldives
+2074-07-24,Annular,India
+2074-07-24,Annular,Thailand
+2074-07-24,Annular,Cambodia
+2074-07-24,Annular,Vietnam
+2074-07-24,Annular,Philippines
+2074-07-24,Annular,Micronesia
+2074-07-24,Annular,Tuvalu
+2075-01-16,Total,Chile
+2075-01-16,Total,Argentina
+2075-01-16,Total,Paraguay
+2075-01-16,Total,Brazil
+2075-07-13,Annular,Spain
+2075-07-13,Annular,France
+2075-07-13,Annular,Monaco
+2075-07-13,Annular,Italy
+2075-07-13,Annular,San Marino
+2075-07-13,Annular,Austria
+2075-07-13,Annular,Slovenia
+2075-07-13,Annular,Croatia
+2075-07-13,Annular,Bosnia and Herzegovina
+2075-07-13,Annular,Hungary
+2075-07-13,Annular,Slovakia
+2075-07-13,Annular,Czechia
+2075-07-13,Annular,Romania
+2075-07-13,Annular,Poland
+2075-07-13,Annular,Ukraine
+2075-07-13,Annular,Belarus
+2075-07-13,Annular,Russia
+2076-01-06,Total,Antarctica
+2077-05-22,Total,Australia
+2077-05-22,Total,Papua New Guinea
+2077-05-22,Total,Solomon Islands
+2077-11-15,Annular,United States of America
+2077-11-15,Annular,Mexico
+2077-11-15,Annular,Cuba
+2077-11-15,Annular,Colombia
+2077-11-15,Annular,Venezuela
+2077-11-15,Annular,Brazil
+2077-11-15,Annular,Guyana
+2077-11-15,Annular,Suriname
+2077-11-15,Annular,France
+2078-05-11,Total,Kiribati
+2078-05-11,Total,Mexico
+2078-05-11,Total,United States of America
+2078-05-11,Total,Georgia
+2078-05-11,Total,Spain
+2078-11-04,Annular,Chile
+2078-11-04,Annular,Argentina
+2078-11-04,Annular,Saint Helena
+2079-05-01,Total,United States of America
+2079-05-01,Total,Canada
+2079-05-01,Total,Greenland
+2079-10-24,Annular,New Zealand
+2079-10-24,Annular,Antarctica
+2081-03-10,Annular,Chile
+2081-03-10,Annular,Argentina
+2081-03-10,Annular,Liberia
+2081-03-10,Annular,Côte d'Ivoire
+2081-03-10,Annular,Ghana
+2081-03-10,Annular,Togo
+2081-03-10,Annular,Benin
+2081-03-10,Annular,Nigeria
+2081-03-10,Annular,Cameroon
+2081-03-10,Annular,Central African Republic
+2081-09-03,Total,France
+2081-09-03,Total,Germany
+2081-09-03,Total,Switzerland
+2081-09-03,Total,Liechtenstein
+2081-09-03,Total,Austria
+2081-09-03,Total,Italy
+2081-09-03,Total,Slovenia
+2081-09-03,Total,Croatia
+2081-09-03,Total,Hungary
+2081-09-03,Total,Bosnia and Herzegovina
+2081-09-03,Total,Serbia
+2081-09-03,Total,Romania
+2081-09-03,Total,Bulgaria
+2081-09-03,Total,Turkey
+2081-09-03,Total,Syria
+2081-09-03,Total,Iraq
+2081-09-03,Total,Bahrain
+2081-09-03,Total,Kuwait
+2081-09-03,Total,Iran
+2081-09-03,Total,Qatar
+2081-09-03,Total,United Arab Emirates
+2081-09-03,Total,Saudi Arabia
+2081-09-03,Total,Oman
+2081-09-03,Total,Maldives
+2081-09-03,Total,Indonesia
+2082-02-27,Annular,Peru
+2082-02-27,Annular,Brazil
+2082-02-27,Annular,Suriname
+2082-02-27,Annular,France
+2082-02-27,Annular,Portugal
+2082-02-27,Annular,Spain
+2082-02-27,Annular,Switzerland
+2082-02-27,Annular,Italy
+2082-02-27,Annular,Germany
+2082-02-27,Annular,Liechtenstein
+2082-02-27,Annular,Austria
+2082-02-27,Annular,Slovenia
+2082-02-27,Annular,Croatia
+2082-02-27,Annular,Hungary
+2082-08-24,Total,Indonesia
+2082-08-24,Total,Malaysia
+2082-08-24,Total,Brunei
+2082-08-24,Total,Papua New Guinea
+2084-07-03,Annular,Russia
+2084-07-03,Annular,United States of America
+2084-07-03,Annular,Canada
+2084-12-27,Total,France
+2085-06-22,Annular,India
+2085-06-22,Annular,Myanmar
+2085-06-22,Annular,China
+2085-06-22,Annular,Japan
+2085-06-22,Annular,Marshall Islands
+2085-06-22,Annular,Kiribati
+2085-12-16,Annular,Micronesia
+2085-12-16,Annular,Mexico
+2086-06-11,Total,Namibia
+2086-06-11,Total,Botswana
+2086-06-11,Total,South Africa
+2088-04-21,Total,Cabo Verde
+2088-04-21,Total,Mauritania
+2088-04-21,Total,Western Sahara
+2088-04-21,Total,Mali
+2088-04-21,Total,Algeria
+2088-04-21,Total,Tunisia
+2088-04-21,Total,Malta
+2088-04-21,Total,Italy
+2088-04-21,Total,Greece
+2088-04-21,Total,Turkey
+2088-04-21,Total,Georgia
+2088-04-21,Total,Russia
+2088-04-21,Total,Kazakhstan
+2088-04-21,Total,Uzbekistan
+2088-04-21,Total,Kyrgyzstan
+2088-04-21,Total,China
+2088-10-14,Annular,Chile
+2088-10-14,Annular,Argentina
+2089-04-10,Annular,Australia
+2089-04-10,Annular,Tonga
+2089-04-10,Annular,Niue
+2089-10-04,Total,China
+2089-10-04,Total,Japan
+2089-10-04,Total,Northern Mariana Islands
+2089-10-04,Total,Kiribati
+2090-09-23,Total,Canada
+2090-09-23,Total,Greenland
+2090-09-23,Total,Ireland
+2090-09-23,Total,United Kingdom
+2090-09-23,Total,France
+2090-09-23,Total,Belgium
+2091-08-15,Total,NA
+2092-02-07,Annular,Panama
+2092-02-07,Annular,Colombia
+2092-02-07,Annular,Venezuela
+2092-02-07,Annular,Guyana
+2092-02-07,Annular,Spain
+2092-02-07,Annular,Morocco
+2092-02-07,Annular,Algeria
+2092-02-07,Annular,Tunisia
+2092-08-03,Annular,Liberia
+2092-08-03,Annular,Côte d'Ivoire
+2092-08-03,Annular,Ghana
+2092-08-03,Annular,Togo
+2092-08-03,Annular,Benin
+2092-08-03,Annular,Nigeria
+2092-08-03,Annular,Cameroon
+2092-08-03,Annular,Chad
+2092-08-03,Annular,Central African Republic
+2092-08-03,Annular,South Sudan
+2092-08-03,Annular,Uganda
+2092-08-03,Annular,Kenya
+2092-08-03,Annular,Somalia
+2092-08-03,Annular,Seychelles
+2093-01-27,Total,Australia
+2093-07-23,Annular,United States of America
+2093-07-23,Annular,Canada
+2093-07-23,Annular,Ireland
+2093-07-23,Annular,United Kingdom
+2093-07-23,Annular,Netherlands
+2093-07-23,Annular,Germany
+2093-07-23,Annular,Czechia
+2093-07-23,Annular,Poland
+2093-07-23,Annular,Slovakia
+2093-07-23,Annular,Hungary
+2093-07-23,Annular,Ukraine
+2093-07-23,Annular,Romania
+2093-07-23,Annular,Moldova
+2093-07-23,Annular,Turkey
+2093-07-23,Annular,Iraq
+2093-07-23,Annular,Iran
+2093-07-23,Annular,Pakistan
+2093-07-23,Annular,India
+2094-01-16,Total,Antarctica
+2095-06-02,Total,South Africa
+2095-06-02,Total,Namibia
+2095-06-02,Total,Botswana
+2095-06-02,Total,Zimbabwe
+2095-06-02,Total,Mozambique
+2095-06-02,Total,Malawi
+2095-06-02,Total,Madagascar
+2095-11-27,Annular,China
+2095-11-27,Annular,North Korea
+2095-11-27,Annular,South Korea
+2095-11-27,Annular,Japan
+2095-11-27,Annular,Marshall Islands
+2095-11-27,Annular,Kiribati
+2096-05-22,Total,Indonesia
+2096-05-22,Total,Philippines
+2096-11-15,Annular,Malaysia
+2096-11-15,Annular,Brunei
+2096-11-15,Annular,Indonesia
+2096-11-15,Annular,Papua New Guinea
+2096-11-15,Annular,Australia
+2096-11-15,Annular,New Zealand
+2097-05-11,Total,United States of America
+2097-05-11,Total,Norway
+2097-05-11,Total,Russia
+2097-11-04,Annular,Antarctica
+2099-03-21,Annular,New Zealand
+2099-03-21,Annular,French Polynesia
+2099-09-14,Total,Canada
+2099-09-14,Total,United States of America
+2100-03-10,Annular,Australia
+2100-03-10,Annular,Papua New Guinea
+2100-03-10,Annular,Solomon Islands
+2100-03-10,Annular,Tuvalu
+2100-03-10,Annular,United States of America
+2100-09-04,Total,Sierra Leone
+2100-09-04,Total,Guinea
+2100-09-04,Total,Côte d'Ivoire
+2100-09-04,Total,Ghana
+2100-09-04,Total,Togo
+2100-09-04,Total,Benin
+2100-09-04,Total,Nigeria
+2100-09-04,Total,Cameroon
+2100-09-04,Total,Central African Republic
+2100-09-04,Total,Democratic Republic of the Congo
+2100-09-04,Total,Rwanda
+2100-09-04,Total,Uganda
+2100-09-04,Total,Burundi
+2100-09-04,Total,Tanzania
+2100-09-04,Total,Mozambique
+2100-09-04,Total,Madagascar
