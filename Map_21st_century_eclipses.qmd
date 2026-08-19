@@ -26,16 +26,14 @@ eclipse_data <- eclipse_data %>%
       "<br>Date:",
       Date,
       "<br>Time:",
-      `Time ofgreatest eclipse(Terrestrial Time)`
+      `Time_of_greatest_eclipse_terrestrial_time`
     )
   )
 
 eclipse_colors <- c(
   "Total" = "#000000",
-  "Total (non-central)" = "#000000",
   "Hybrid" = "#530f1e",
   "Annular" = "#a44322",
-  "Annular (non-central)" = "#a44322", 
   "Partial" = "#f8bc04" 
 )
 
