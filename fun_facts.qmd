@@ -46,7 +46,7 @@ library(patchwork)
 
 eclipse_facts <- c(
   "A total solar eclipse is possible only because of a wild coincidence: the Sun is about 400 times wider than the Moon, but also about 400 times farther away, so they appear almost exactly the same size in our sky.",
-  "That coincidence won't last forever. The Moon drifts away from Earth by about 3.8 cm per year, so in roughly 600 million years it'll be too far away to fully cover the Sun, and total solar eclipses will stop happening.",
+  "The Moon drifts away from Earth by about 3.8 cm per year, so in roughly 600 million years it'll be too far away to fully cover the Sun, and total solar eclipses will stop happening.",
   "The path of totality during a total solar eclipse is usually only 100-160 km wide, even though the partial eclipse can be seen across a much larger swath of the planet.",
   "Totality itself rarely lasts more than about 7.5 minutes anywhere on Earth, and most total eclipses are much shorter than that.",
   "During totality, temperatures can drop noticeably, sometimes several degrees Celsius, since sunlight is briefly blocked.",
@@ -62,14 +62,23 @@ eclipse_facts <- c(
   "An annular eclipse, sometimes called a \"ring of fire,\" happens when the Moon is near the farthest point in its orbit (apogee) and looks slightly too small to fully cover the Sun.",
   "The 2017 \"Great American Eclipse\" was the first total solar eclipse to cross the entire contiguous United States coast-to-coast since 1918.",
   "Eclipses have shaped history: a solar eclipse in 585 BCE reportedly stopped a battle between the Lydians and the Medes, who took it as a sign to make peace.",
-  "Christopher Columbus is said to have used his advance knowledge of a lunar eclipse in 1504 to intimidate Indigenous Jamaicans into continuing to supply his stranded crew, by \"threatening\" to make the moon disappear. In fact, the last total solar eclipse lasting more than 7 minutes was on June 30th, 1973, with the next occurring on July 27th, 2204.",
+  "Christopher Columbus used his knowledge of a lunar eclipse in 1504 to intimidate Indigenous Jamaicans into continuing to supply his stranded crew, by \"threatening\" to make the moon disappear.",
+"The last total solar eclipse lasting more than 7 minutes was on June 30th, 1973, with the next occurring on July 27th, 2204.",
   "Solar eclipse corona observations in 1919 helped confirm Einstein's general theory of relativity, when starlight was shown to bend around the Sun exactly as predicted.",
   "Other planets have eclipses too. Jupiter's large moons regularly cast shadows on its cloud tops, an event you can actually watch through a home telescope."
 )
 
 colors <- c("#2c3e50","#FFB400", "#FDAE54")
 
-cards <- Map(make_fact_card, eclipse_facts, rep_len(colors, length(eclipse_facts)))
+text_color_for <- function(fill) {
+  rgb <- col2rgb(fill) / 255
+  luminance <- 0.2126 * rgb["red", ] + 0.7152 * rgb["green", ] + 0.0722 * rgb["blue", ]
+  ifelse(luminance > 0.5, "black", "white")
+}
+
+fills <- rep_len(colors, length(eclipse_facts))
+text_colors <- text_color_for(fills)
+cards <- Map(make_fact_card, eclipse_facts, fills, text_colors)
 
 wrap_plots(cards, ncol = 2)
 ```
