@@ -7,6 +7,13 @@
     "text": "#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| viewerHeight: 700\nlibrary(shiny)\nlibrary(rmarkdown)\nlibrary(readr)\nlibrary(plotly)\nlibrary(ggplot2)\nshinyApp(\n  ui = fluidPage(\n    selectInput(\"year_input\", label = \"Select year\", choices = NULL),\n    selectInput(\"eclipse_input\", label = \"Select eclipse\", choices = NULL),\n    #tableOutput(\"detail_output\"),\n    plotOutput(\"eclipse_sun\", width = \"300px\", height = \"300px\"),\n    plotlyOutput(\"eclipse_map\", width = \"300px\", height = \"300px\"),\n  ),\n\n  server = function(input, output, session) {\n    # year (static)\n    updateSelectInput(session, \"year_input\", choices = sort(years))\n\n    # eclipses that happened in the selected year\n    year_rows &lt;- reactive({\n      req(input$year_input)\n      eclipses[eclipses$Year == as.integer(input$year_input), ]\n    })\n\n    observe({\n      df &lt;- year_rows()\n      labels &lt;- paste0(format(df$Date, \"%Y-%m-%d\"), \" (\", df$Type, \")\")\n      choices &lt;- setNames(format(df$Date, \"%Y-%m-%d\"), labels)\n      updateSelectInput(\n        session,\n        \"eclipse_input\",\n        label = \"Select eclipse\",\n        choices = choices\n      )\n    })\n\n    # eclipse the user picked\n    selected_row &lt;- reactive({\n      req(input$eclipse_input)\n      year_rows()[format(year_rows()$Date, \"%Y-%m-%d\") == input$eclipse_input, ]\n    })\n\n    # --- \"consequent actions\" go here --------\n    output$detail_output &lt;- renderTable({\n      req(selected_row())\n      selected_row()[, c(\"Type\", \"Gamma\", \"Magnitude\", \"Latitude\", \"Longitude\")]\n    })\n\n    output$eclipse_sun &lt;- renderPlot({\n      req(selected_row())\n\n      # Extract data\n      mag &lt;- as.numeric(selected_row()$Magnitude)\n      tp &lt;- (selected_row()$Type)\n\n      plot_magnitude(mag, tp)\n    })\n\n    output$eclipse_map &lt;- renderPlotly({\n      req(selected_row())\n\n      # Extract data\n      tp &lt;- (selected_row()$Type)\n      dt &lt;- as.character(selected_row()$Date)\n      url &lt;- construct_url(dt, tp)\n\n      plot_path(url)\n    })\n  },\n  options = list(height = 600)\n)"
   },
   {
+    "objectID": "individual_examples.html#partial-eclipse-2069-10-15",
+    "href": "individual_examples.html#partial-eclipse-2069-10-15",
+    "title": "Individual eclipses",
+    "section": "Partial eclipse (2069-10-15)",
+    "text": "Partial eclipse (2069-10-15)"
+  },
+  {
     "objectID": "individual_examples.html#annular-eclipse-2003-05-31",
     "href": "individual_examples.html#annular-eclipse-2003-05-31",
     "title": "Individual eclipses",
