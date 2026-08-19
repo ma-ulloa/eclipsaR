@@ -6,39 +6,60 @@ format: html
 page-layout: full
 ---
 
-::: {layout="[20,80]"}
+:::: {layout="[20,80]"}
 ![](data/profiles/Andrea.png)
 
-#### Andrea {.text-center}
+::: {.text-center}
+#### Andrea
 
-Second year PhD student KTH
-Professional in making you laugh.
+First year PhD student KTH.
+
+Dive master and certified literature nerd 📚.
+
+Professional in making you laugh 😉
 :::
+::::
 
-::: {layout="[20,80]"}
+:::: {layout="[20,80]"}
 ![](data/profiles/Ale.jpeg)
 
-#### Ale {.text-center}
+::: {.text-center}
+#### Ale
 
 First year PhD student Karolinska Institutet.
-Cosplaying artsy girlie. Likes movies and photography.
-:::
 
-::: {layout="[20,80]"}
+Cosplaying artsy girlie 👸.
+
+Likes movies and photography 📸.
+:::
+::::
+
+:::: {layout="[20,80]"}
 ![](data/profiles/Matilde.png)
 
-#### Matilde {.text-center}
+::: {.text-center}
+#### Matilde
 
 First year PhD student Stockholm University.
-Reddit afficionada. Becoming a fungi expert. 
 
+Becoming a fungi expert 🍄.
+
+Knows all your pop references 💅.
 :::
+::::
 
-::: {layout="[20,80]"}
+:::: {layout="[20,80]"}
 ![](data/profiles/Martin.jpg)
 
-#### Martin {.text-center}
+::: {.text-center}
+#### Martin
 
 First year PhD student Karolinska Institutet.
-Safo's dad. Enjoy's running, maths and life.
+
+Safo's dad 🐈‍⬛.
+
+Enjoy's running 🏃‍♂️‍➡️.
+
+Does not listen music in english.
 :::
+::::
