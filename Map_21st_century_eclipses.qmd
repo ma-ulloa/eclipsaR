@@ -35,6 +35,7 @@ library(vistime)
 library(tibble)
 library(patchwork)
 library(readr)
+library(ggforce)
 
 ```
 
@@ -44,64 +45,12 @@ country_data <- read_csv("data/total_eclipses_by_country.csv")
 ```
 
 
+::: {.text-center}
+# Eclipses across the globe
+:::
 ```{r}
-#| label: facts-cards-grid
 #| column: screen-inset
-#| out-width: "100%"
-#| fig-width: 9
-#| fig-height: 2
-
-make_fact_card <- function(fact_text, fill = "#2c3e50", text_color = "white") {
-  ggplot() +
-    geom_rect(
-        aes(
-            xmin = 0,
-            xmax = 2,
-            ymin = 0,
-            ymax = 1),
-            fill = fill
-            ) +
-    annotate("text",
-            x = 1,
-            y = 0.5,
-            label = str_wrap(fact_text, width = 30),
-            color = text_color,
-            family = "Avenir Next",
-            size = 4,
-            hjust = 0.5, 
-            vjust = 0.5
-    ) +
-    theme_void() +
-    coord_fixed(ratio = 1)
-}
-
-eclipse_facts <- c(
-  "224 solar eclipses",
-  "77 partial",
-  "72 annular",
-  "68 total",
-  "7 hybrids"
-)
-
-colors <- c("#3d3a4b","#d3c0cd","#e3dfff")
-
-text_color_for <- function(fill) {
-  rgb <- col2rgb(fill) / 255
-  luminance <- 0.2126 * rgb["red", ] + 0.7152 * rgb["green", ] + 0.0722 * rgb["blue", ]
-  ifelse(luminance > 0.5, "black", "white")
-}
-
-fills <- rep_len(colors, length(eclipse_facts))
-text_colors <- text_color_for(fills)
-cards <- Map(make_fact_card, eclipse_facts, fills, text_colors)
-
-wrap_plots(cards, ncol = 5)
-
-```
-
-```{r}
-#| fig-width: 9
-#| fig-height: 4
+#| out-width: "90%"
 
 eclipse_data <- eclipse_data %>%
   mutate(
@@ -148,14 +97,108 @@ plot_ly(
   )
 ```
 
-:::
+```{r}
+#| label: facts-cards-grid
+#| column: screen-inset
+#| out-width: "100%"
+#| fig-width: 15
+#| fig-height: 3.4
 
-::: {.column width="50%"}
+make_fact_card <- function(fact_text, fill = "#3d3a4b", text_color = "white", r = 0.9) {
+  ggplot() +
+    geom_circle(aes(x0 = 0, y0 = 0, r = r), fill = fill, color = NA) +
+    annotate("text",
+            x = 0,
+            y = 0,
+            label = str_wrap(fact_text, width = 12),
+            color = text_color,
+            family = "Avenir Next",
+            size = 3.8,
+            lineheight = 0.9,
+            hjust = 0.5,
+            vjust = 0.5
+    ) +
+    xlim(-1, 1) +
+    ylim(-1, 1) +
+    theme_void() +
+    coord_fixed(ratio = 1)
+}
+
+eclipse_facts <- c(
+  "224 solar eclipses",
+  "77 partial",
+  "72 annular",
+  "68 total",
+  "7 hybrids"
+)
+
+colors <- c("#3d3a4b","#d3c0cd","#e3dfff")
+
+text_color_for <- function(fill) {
+  rgb <- col2rgb(fill) / 255
+  luminance <- 0.2126 * rgb["red", ] + 0.7152 * rgb["green", ] + 0.0722 * rgb["blue", ]
+  ifelse(luminance > 0.5, "black", "white")
+}
+
+fills <- rep_len(colors, length(eclipse_facts))
+text_colors <- text_color_for(fills)
+
+# radius scaled by area so each circle's size reflects its count
+fact_counts <- as.numeric(str_extract(eclipse_facts, "\\d+"))
+rescale <- function(x, to) (x - min(x)) / (max(x) - min(x)) * diff(to) + to[1]
+radii <- rescale(sqrt(fact_counts), to = c(0.45, 0.95))
+
+cards <- Map(make_fact_card, eclipse_facts, fills, text_colors, radii)
+
+wrap_plots(cards, ncol = 5)
+
+```
+
+```{r}
+#| label: timeline
+#| fig-width: 18
+#| fig-height: 8
+#| column: screen-inset
+
+eclipse_tab <- eclipse_data |>
+  rowid_to_column() |>
+  mutate(
+    event = paste0("event", rowid),
+    color = case_when(
+      Type == "Total" ~ "#3d3a4b",
+      Type == "Annular" ~ "#937666",
+      Type == "Partial" ~ "#e3dfff",
+      Type == "Hybrid" ~ "d3c0cd"
+    )
+  )
+
+timeline_data <- data.frame(
+  event = eclipse_tab$event,
+  start = eclipse_tab$Date,
+  type = eclipse_tab$Type,
+  color = eclipse_tab$color
+)
+
+timelineplot <- vistime::vistime(
+  timeline_data,
+  col.event = "event",
+  col.group = "type",
+  optimize_y = T,
+  show_labels = FALSE,
+  linewidth = 5
+)
+
+pp <- plotly::plotly_build(timelineplot)
+pp$x$layout$xaxis$tickfont <- list(size = 12)
+pp$x$layout$yaxis$tickfont <- list(size = 12)
+
+pp
+```
 
 
 ```{r}
-#| fig-width: 18
-#| fig-height: 8
+#| column: screen-inset
+#| out-width: "100%"
 
 
 country_eclipse_counts <- country_data %>%
@@ -199,52 +242,12 @@ plot_ly(
 
 ```
 
-::::
-
-```{r}
-#| label: timeline
-#| fig-width: 18
-#| fig-height: 8
-
-eclipse_tab <- eclipse_data |>
-  rowid_to_column() |>
-  mutate(
-    event = paste0("event", rowid),
-    color = case_when(
-      Type == "Total" ~ "#3d3a4b",
-      Type == "Annular" ~ "#937666",
-      Type == "Partial" ~ "#e3dfff",
-      Type == "Hybrid" ~ "d3c0cd"
-    )
-  )
-
-timeline_data <- data.frame(
-  event = eclipse_tab$event,
-  start = eclipse_tab$Date,
-  type = eclipse_tab$Type,
-  color = eclipse_tab$color
-)
-
-timelineplot <- vistime::vistime(
-  timeline_data,
-  col.event = "event",
-  col.group = "type",
-  optimize_y = T,
-  show_labels = FALSE,
-  linewidth = 5
-)
-
-pp <- plotly::plotly_build(timelineplot)
-pp$x$layout$xaxis$tickfont <- list(size = 12)
-pp$x$layout$yaxis$tickfont <- list(size = 12)
-
-pp
-```
 
 ```{r}
 #| label: average duration time
 #| fig-height: 4
 #| fig-width: 10
+#| fig-align: center
 
 eclipse_tab <- eclipse_tab |>
   mutate(eclipse_duration = str_replace(Central_duration_min_s, ":", ".")) |>
@@ -301,7 +304,7 @@ p + p2 + plot_layout(ncol = 2,
 
 
 
-### Data
+### Data {.text-left}
 
 Data used here was shared by  Fred Espenak of NASA's Goddard Space Flight Center [NASA Eclipse Data](https://eclipse.gsfc.nasa.gov/SEcat5/SE2001-2100.html).
 
