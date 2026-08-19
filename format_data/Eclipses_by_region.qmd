@@ -367,3 +367,15 @@ problematic_names <- eclipse_country_info %>%
 
 sort(unique(problematic_names$area))
 ```
+
+```{r}
+reduced_country_table <- eclipse_country_info %>%
+  select(Date, eclipse_type, country) %>%
+  distinct()
+```
+
+```{r}
+write_csv(reduced_country_table, "data/total_eclipses_by_country.csv")
+```
+
+
