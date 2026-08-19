@@ -59,7 +59,7 @@ eclipse2_magnitude <- eclipse_data |>
   pull(Magnitude)
 
 plot_magnitude(eclipse2_magnitude, eclipse2_type)
-p2 <- plot_path(url = construct_url(eclipse1_date, type = eclipse1_type))
+p2 <- plot_path(url = construct_url(eclipse2_date, type = eclipse2_type))
 ```
 
 ```{r}

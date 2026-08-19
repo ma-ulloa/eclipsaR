@@ -17,10 +17,10 @@ website:
         text: 21st century eclipses
       - href: interactive_table.qmd
         text: Eclipse info
-      - href: fun_facts.qmd
-        text: Fun facts
       - href: individual_examples.qmd
         text: Eclipse examples
+      - href: fun_facts.qmd
+        text: Fun facts
   page-footer:
     center:
       - href: about.qmd
