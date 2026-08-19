@@ -101,10 +101,10 @@ state_lookup <- states %>%
 ```{r}
 #Separate the countries depending on the type of eclipse after which they are listed using |
 eclipse_areas <- eclipse_data %>%
-  select(Date, `Geographical area`) %>%
+  select(Date, `Geographical_area`) %>%
   mutate(
-    `Geographical area` = str_replace_all(
-      `Geographical area`,
+    `Geographical_area` = str_replace_all(
+      `Geographical_area`,
       "(Total|Annular|Hybrid|Partial):",
       "|\\1:"
     )
@@ -115,10 +115,10 @@ eclipse_areas <- eclipse_data %>%
 #Separate types from the same date into different rows
 eclipse_areas <- eclipse_areas %>%
   separate_rows(
-    `Geographical area`,
+    `Geographical_area`,
     sep = "\\|"
   ) %>%
-  filter(`Geographical area` != "")
+  filter(`Geographical_area` != "")
 ```
 
 ```{r}
@@ -126,11 +126,11 @@ eclipse_areas <- eclipse_areas %>%
 eclipse_areas <- eclipse_areas %>%
   mutate(
     eclipse_type = str_extract(
-      `Geographical area`,
+      `Geographical_area`,
       "^(Total|Annular|Hybrid|Partial)"
     ),
     area = str_remove(
-      `Geographical area`,
+      `Geographical_area`,
       "^(Total|Annular|Hybrid|Partial):\\s*"
     )
   )
@@ -142,9 +142,9 @@ eclipse_areas <- eclipse_areas %>%
 ```
 
 ```{r}
-#Put each country into a different row
+# Put each country into a different row
 
-#Countries that contain " and " but should NOT be split
+# Countries that contain " and " but should NOT be split
 exceptions <- c(
   "Bosnia and Herzegovina",
   "Antigua and Barbuda",
@@ -155,7 +155,7 @@ exceptions <- c(
 )
 
 eclipse_areas <- eclipse_areas %>%
-  # Temporarily replace " and " inside the exceptions
+  # Temporarily protect exceptions
   mutate(
     area = purrr::reduce(
       exceptions,
@@ -168,7 +168,7 @@ eclipse_areas <- eclipse_areas %>%
     )
   ) %>%
   
-  # Now "and" can safely be treated as a separator
+  # Treat "and" as a separator
   mutate(
     area = str_replace_all(
       area,
@@ -185,11 +185,27 @@ eclipse_areas <- eclipse_areas %>%
   
   # Restore "and"
   mutate(
-    area = str_replace_all(area, "___AND___", " and ")
+    area = str_replace_all(
+      area,
+      "___AND___",
+      " and "
+    )
   ) %>%
   
+  # Remove leading/trailing whitespace
   mutate(
     area = str_trim(area)
+  ) %>%
+  
+  # Standardize country names
+  mutate(
+    area = recode(
+      area,
+      "Cape Verde" = "Cabo Verde",
+      "Czech Republic" = "Czechia",
+      "East Timor" = "Timor-Leste",
+      "Eswatini" = "eSwatini"
+    )
   )
 ```
 
