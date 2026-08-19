@@ -1,12 +1,27 @@
 ---
-title: "Map the 21st century Eclipses"
-format: html
+format:
+  html:
+    page-layout: full
+    grid:
+      body-width: 2000px
+      margin-width: 40px
+      gutter-width: 1.5rem
 
 execute:
   echo: false
   warning: false
   freeze: auto
 ---
+
+```{=html}
+<style>
+#quarto-document-content, .content {
+  max-width: 100% !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+</style>
+```
 
 ```{r}
 library(readr)
@@ -23,6 +38,12 @@ library(tibble)
 ```{r}
 eclipse_data <- read_csv("data/formatted_eclipses.csv")
 ```
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
 
 ```{r}
 eclipse_data <- eclipse_data %>%
@@ -41,7 +62,7 @@ eclipse_colors <- c(
   "Total" = "#000000",
   "Hybrid" = "#530f1e",
   "Annular" = "#a44322",
-  "Partial" = "#f8bc04" 
+  "Partial" = "#f8bc04"
 )
 
 plot_ly(
@@ -68,13 +89,16 @@ plot_ly(
   )
 ```
 
+:::
 
+::: {.column width="50%"}
 
 ```{r}
 #| label: timeline
+#| fig-height: 2
 
-eclipse_tab <- eclipse_data |> 
-    rowid_to_column() |> 
+eclipse_tab <- eclipse_data |>
+    rowid_to_column() |>
     mutate(event = paste0("event", rowid),
     color = case_when(
         Type == "Total" ~ "#2c3e50",
@@ -95,15 +119,18 @@ timelineplot <- vistime::vistime(timeline_data,
                  col.group = "type",
                  optimize_y = T,
                  show_labels = FALSE,
-                 linewidth = 12
+                 linewidth = 5
 
 )
 
 pp <- plotly::plotly_build(timelineplot)
-pp$x$layout$xaxis$tickfont <- list(size = 20)
-pp$x$layout$yaxis$tickfont <- list(size = 20)
+pp$x$layout$xaxis$tickfont <- list(size = 12)
+pp$x$layout$yaxis$tickfont <- list(size = 12)
 
 pp
 
-
 ```
+
+:::
+
+::::
