@@ -25,6 +25,8 @@ website:
     center:
       - href: about.qmd
         text: about us
+      - href: "https://github.com/ma-ulloa/eclipsaR"
+        text: '<img src="logo/logo-sticker.png" alt="GitHub" height="24">'
     background: transparent
     foreground: white
 
