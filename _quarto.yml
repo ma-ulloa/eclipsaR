@@ -19,6 +19,8 @@ website:
         text: Eclipse info
       - href: fun_facts.qmd
         text: Fun facts
+      - href: individual_examples.qmd
+        text: Eclipse examples
   page-footer:
     center:
       - href: about.qmd
